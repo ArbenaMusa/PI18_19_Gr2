@@ -187,11 +187,11 @@ nav a:hover::after
   width: 18.7%;
   height:40%;
   border-radius: 25px;
+	margin-bottom:100px;
 }
 .text2
 {
   color:white;
-  border:white solid 2px;
   height:85%;
   padding:10px;
   border-radius: 25px;
