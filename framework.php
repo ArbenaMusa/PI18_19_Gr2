@@ -33,6 +33,8 @@ class App {
   }
 }
 
+define('POST', $_SERVER['REQUEST_METHOD'] === 'POST');
+define('GET', $_SERVER['REQUEST_METHOD'] === 'GET');
 $app = new App();
 $match = new ValidatorFactory();
 

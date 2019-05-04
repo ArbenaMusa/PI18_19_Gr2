@@ -4,7 +4,7 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, intial-scale=1.0"/>
         <link rel="stylesheet" href="/static/css/index.css"/>
-        <title>STruDB-Front Page</title>
+        <title>StuDB-Front Page</title>
     </head>
     <body>
         <div class = "container-main">
