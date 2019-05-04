@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, intial-scale=1.0"/>
-        <link rel="stylesheet" href="../css/index.css"/>
+        <link rel="stylesheet" href="/static/css/index.css"/>
         <title>STruDB-Front Page</title>
     </head>
     <body>
@@ -12,7 +12,7 @@
                 <div id="navigate-left">
                     <nav>
                         <ul>
-                            <li><img src="../images\StuDB.png" alt="Avatar" width="70" height="70" style="border-radius:0;"></li>
+                            <li><img src="/static/img/StuDB.png" alt="Avatar" width="70" height="70" style="border-radius:0;"></li>
                             <li><a href="front.html" class="active">Pite 1</a></li>
                             <li><a href="#">Pite 2</a></li>
                             <li><a href="#">Pite 3</a></li>
@@ -22,10 +22,10 @@
                 </div>
                 <div id="natigate-right">
                     <div class="dropdown">
-                        <img src="../images\bbb.jpg" alt="Avatar" width="50" height="50" style="border: #FF4B2B solid 2px;">
+                        <img src="/static/img//bbb.jpg" alt="Avatar" width="50" height="50" style="border: #FF4B2B solid 2px;">
                         <div class="dropdown-content">
                             <div class="container">
-                                <img src="../images\bbb.jpg" alt="Avatar" width="167" height="167" style="border: #FF4B2B solid 2px;">
+                                <img src="/static/img/bbb.jpg" alt="Avatar" width="167" height="167" style="border: #FF4B2B solid 2px;">
                                 <div class="middle">
                                     <div class="text"><a href="#" style="background-color: transparent"><b>Change Img</b></a></div>
                                 </div>
@@ -45,7 +45,7 @@
                 <div class="box">
                     <div class="text2">
                         <p>Opsioni 1</p>
-                        <img src="../images\bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
+                        <img src="/static/img/bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
                     </div>
                 </div>
             </a>
@@ -53,7 +53,7 @@
                 <div class="box">
                     <div class="text2">
                         <p>Opsioni 2</p>
-                        <img src="../images\bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
+                        <img src="/static/img/bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
                     </div>
                 </div>
             </a>
@@ -61,7 +61,7 @@
                 <div class="box">
                     <div class="text2">
                         <p>Opsioni 3</p>
-                        <img src="../images\bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
+                        <img src="/static/img/bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
                     </div>
                 </div>
             </a>
@@ -69,7 +69,7 @@
                 <div class="box">
                     <div class="text2">
                         <p>Opsioni 4</p>
-                        <img src="../images\bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
+                        <img src="/static/img/bbb.jpg" alt="Avatar" width="100" height="100"style="float:right">
                     </div>
                 </div>
             </a>
