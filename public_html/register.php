@@ -1,33 +1,25 @@
 <?php
 
 if (POST) {
-  /*
-      POST = [
-        'emri' => 'ardit',
-        'email' => '123'
-        'mosha' => 19
-      ]
-  */
-  
   $modelState = $app->bind([
-    'username' => $match->regex('/^[A-Za-z]{2,5}$/', 'Shfrytezuesi duhet te kete se paku 5 karaktere.'),
-    'email' => $match->email('Email e shfrytezuesit nuk eshte valide.'),
-    'age' => $match->integer()
+    'name' => $match->regex('/^\s*([a-zA-Z]+)\s+([a-zA-Z]+)\s*$/', 'Fusha duhet te permbaj emrin dhe mbiemrin'),
+    'email' => $match->email(),
+    'password' => $match->regex('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', 'Passwordi i dhene nuk eshte valid'),
+    'password2' => $match->equals('password'),
+    'type' => $match->either(['student', 'teacher'], 'Zgjedhni njerin opcion')
   ]);
 
   if ($modelState->isValid()) {
-    // save user
+    $app->users->create($modelState->model);
+    return view('login', [
+      'panel' => 'register'
+    ]);
   } else {
-    return view('register', [
-      'modelState' => $modelState,
-      'model' => $modelState->model
+    return view('login', [
+      'panel' => 'register',
+      'modelState' => $modelState
     ]);
   }
-
-  if ($modelState->isValid()) {
-
-  }
-  
 } else {
   return redirect('/login.php');
 }

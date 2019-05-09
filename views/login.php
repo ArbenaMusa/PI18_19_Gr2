@@ -8,17 +8,22 @@
         <title>StuDB</title>
     </head>
     <body>
-        <div class="container" id="container">
+        <div class="container <?php if ($panel == 'register') echo 'right-panel-active' ?>" id="container">
             <div class="form-container sign-up-container">
-                <form action="/signup.php" method="POST" id="signup">
+                <form action="/register.php" method="POST" id="signup">
                     <h1>Create Account</h1>
-                    <input type="text" placeholder="Full name"/>
-                    <input type="email" placeholder="Email"/>
-                    <input type="password" placeholder="Password"/>
-                    <input type="password" placeholder="Confirm Password"/>
+                    <input type="text" placeholder="Full name" name="name" value="<?= fallback($model->name, '') ?>" />
+                    <div class="error"><?= $modelState->getError('name') ?></div>
+                    <input type="email" placeholder="Email" name="email" value="<?= fallback($model->email, '') ?>"/>
+                    <div class="error"><?= $modelState->getError('email') ?></div>
+                    <input type="password" placeholder="Password" name="password" value="<?= fallback($model->password, '') ?>"/>
+                    <div class="error"><?= $modelState->getError('password') ?></div>
+                    <input type="password" placeholder="Confirm Password" name="password2" value="<?= fallback($model->password, '') ?>"/>
+                    <div class="error"><?= $modelState->getError('password2') ?></div>
                     <span style="font-size: 20px">I am a:</span>
-                    <input type="radio" name="type" value="Teacher">Teacher
-                    <input type="radio" name="type" value="Student">Student
+                    <?php $type = fallback($model->type, 'student') ?>
+                    <input type="radio" name="type" value="teacher" <?= whenEquals($type, 'teacher', 'checked') ?>>Teacher
+                    <input type="radio" name="type" value="student"<?= whenEquals($type, 'student', 'checked') ?>>Student
                     <button type="submit" form="signup" value="Submit">Sign Up</button>
                 </form>
             </div>
@@ -47,6 +52,6 @@
             </div>
         </div>
 
-        <script src="../js/login.js"></script>
+        <script src="/static/js/login.js"></script>
     </body>
 </html>

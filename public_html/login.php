@@ -1,5 +1,7 @@
 <?php
 
-return view('login');
+return view('login', [
+  'panel' => 'login'
+]);
 
 ?>
