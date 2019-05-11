@@ -12,14 +12,30 @@ class SessionUser implements IUser {
   }
 
   public function name() {
-    return isset($_SESSION['user']) ? $_SESSION['user'] : null;
+    return isset($_SESSION['name']) ? $_SESSION['name'] : null;
+  }
+
+  public function email() {
+    return isset($_SESSION['email']) ? $_SESSION['email'] : null;
+  }
+
+  public function type() {
+    return isset($_SESSION['type']) ? $_SESSION['type'] : null;
   }
 
   public function loggedIn() {
-    return isset($_SESSION['user']) && $_SESSION['user'];
+    return isset($_SESSION['email']) && $_SESSION['email'];
+  }
+
+  public function logIn($user) {
+    $_SESSION['email'] =$user->email;
+    $_SESSION['name'] = $user->name;
+    $_SESSION['type'] = $user->type;
   }
 
   public function logOut() {
-    unset($_SESSION['user']);
+    unset($_SESSION['email']);
+    unset($_SESSION['name']);
+    unset($_SESSION['type']);
   }
 }

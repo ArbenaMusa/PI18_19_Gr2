@@ -28,10 +28,13 @@
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="../php/signin.php" method="POST" id="signin">
+                <form action="/login.php" method="POST" id="signin">
                     <h1>Sign in</h1>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <div class="error"><?= $model->getError('status') ?></div>
+                    <input type="email" name="email" placeholder="Email" value="<?= fallback($model->email, '') ?>"/>
+                    <div class="error"><?= $model->getError('email') ?></div>
+                    <input type="password" name="password" placeholder="Password" />
+                    <div class="error"><?= $model->getError('password') ?></div>
                     <a href="#">Forgot your password?</a>
                     <button type="submit" form="signin" value="Submit">Sign In</button>
                 </form>

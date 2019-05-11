@@ -38,4 +38,32 @@ function objectToArray($d) {
   }
 }
 
+// String utils
+
+function stringEquals($str1, $str2) {
+  return strcasecmp($str1, $str2) == 0;
+}
+
+// Array utils
+
+function any(&$array, $predicate) {
+  foreach ($array as $value) {
+    if ($predicate($value)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function &find(&$array, $predicate) {
+  foreach ($array as $value) {
+    if ($predicate($value)) {
+      return $value;
+    }
+  }
+
+  return null;
+}
+
 ?>

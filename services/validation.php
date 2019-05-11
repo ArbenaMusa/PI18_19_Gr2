@@ -50,6 +50,12 @@ class EitherValidator implements IValidator {
   }
 }
 
+class RequiredValidator implements IValidator {
+  public function validate($value, $key, $data) {
+    return !!$value;
+  }
+}
+
 class ValidatorPair {
   public function __construct(IValidator $validator, $error) {
     $this->validator = $validator;
@@ -87,6 +93,10 @@ class ValidatorFactory {
 
   public function either($options, $error = 'Fushe jo valide.') {
     return new ValidatorPair(new EitherValidator($options), $error);
+  }
+
+  public function required($error = 'Fushe e kerkuar.') {
+    return new ValidatorPair(new RequiredValidator(), $error);
   }
 }
 
@@ -140,6 +150,14 @@ class ModelState implements IDynamicData {
       return $this->errorMap[$key];
     } 
     return null;
+  }
+
+  public function setError(string $key, string $error) {
+    $this->errorMap[$key] = $error;
+  }
+
+  public function clearError(string $key) {
+    unset($this->errorMap[$key]);
   }
 
   public function isValid($key = null) {

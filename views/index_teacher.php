@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, intial-scale=1.0"/>
         <title>StuDB-Front Page</title>
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="/static/css/index.css">
     </head>
     <body>
         <div id="header-wrapper">
@@ -29,7 +29,7 @@
                                     <a href="#">Settings</a>
                                     <a href="#">Settings</a>
                                     <a href="#">Settings</a>
-                                    <button class="button1">Sign out</button>
+                                    <a href="/logout.php"><button class="button1">Sign out</button></a>
                                 </div>
                             </div>
                         </li>
@@ -39,7 +39,7 @@
         </div>
     <?php $user="arbena"?>
         <div id="header-featured">
-            <h1>Wellcome echo $user</h1>
+            <h1>Welcome TEACHER <?= $app->user->name() ?></h1>
         </div>
         <div id="banner-wrapper">
             <div id="banner" class="container">
