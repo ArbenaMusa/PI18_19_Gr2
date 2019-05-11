@@ -10,7 +10,8 @@ if (POST) {
   ]);
 
   if ($model->isValid()) {
-    $app->users->create($model);
+    $model->password = password_hash($model->password, PASSWORD_DEFAULT);
+    $app->users->create($model->pluck(['name', 'email', 'password', 'type']));
     return view('login', [
       'panel' => 'register'
     ]);

@@ -16,9 +16,9 @@
                     <div class="error"><?= $model->getError('name') ?></div>
                     <input type="email" placeholder="Email" name="email" value="<?= fallback($model->email, '') ?>"/>
                     <div class="error"><?= $model->getError('email') ?></div>
-                    <input type="password" placeholder="Password" name="password" value="<?= fallback($model->password, '') ?>"/>
+                    <input type="password" placeholder="Password" name="password"/>
                     <div class="error"><?= $model->getError('password') ?></div>
-                    <input type="password" placeholder="Confirm Password" name="password2" value="<?= fallback($model->password, '') ?>"/>
+                    <input type="password" placeholder="Confirm Password" name="password2"/>
                     <div class="error"><?= $model->getError('password2') ?></div>
                     <span style="font-size: 20px">I am a:</span>
                     <?php $type = fallback($model->type, 'student') ?>

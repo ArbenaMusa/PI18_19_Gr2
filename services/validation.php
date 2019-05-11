@@ -1,6 +1,6 @@
 <?php
 
-include_once(__DIR__ . '/utils');
+include_once(__DIR__ . '/utils.php');
 
 interface IValidator {
   public function validate($value, $key, $data);
@@ -107,7 +107,15 @@ class ModelState implements IDynamicData {
     return isset($this->data[$key]);
   }
 
-  public function __get($key) {
+  public function &__get($key) {
+    return $this->data[$key];
+  }
+
+  public function __set($key, $value) {
+    $this->data[$key] = $value;
+  }
+
+  public function get($key) {
     return $this->data[$key];
   }
 
@@ -144,5 +152,25 @@ class ModelState implements IDynamicData {
 
   public function isValidProperty($key) {
     return isset($this->errorMap[$key]);
+  }
+
+  public function pluck($fields = []) {
+    $data = $this->data;
+    $errors = $this->errorMap;
+    $newData = [];
+    $newErrors = [];
+    foreach ($fields as $field) {
+      $newData[$field] = fallback($data[$field], null);
+      if (isset($errors[$field])) {
+        $newErrors[$field] = $errors[$field];
+      }
+    }
+
+    return new ModelState($newData, $newErrors);
+  }
+
+  public function without($fields = []) {
+    $all = array_keys($this->data);
+    return $this->pluck(array_diff($all, $fields));
   }
 }
