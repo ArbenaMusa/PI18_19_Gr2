@@ -1,5 +1,7 @@
 <?php
 
+include_once(__DIR__ . '/utils');
+
 interface IValidator {
   public function validate($value, $key, $data);
 }
@@ -88,15 +90,34 @@ class ValidatorFactory {
   }
 }
 
-class ModelState {
-  private $errorMap;
+class ModelState implements IDynamicData {
+  public static function empty() {
+    return new ModelState();
+  }
 
-  public function __construct($model, $errorMap) {
-    $this->model = $model;
+  private $errorMap;
+  private $data;
+
+  public function __construct($data = [], $errorMap = []) {
+    $this->data = $data;
     $this->errorMap = $errorMap;
   }
 
-  public $model;
+  public function __isset($key) {
+    return isset($this->data[$key]);
+  }
+
+  public function __get($key) {
+    return $this->data[$key];
+  }
+
+  public function set($key, $value) {
+    $this->data[$key] = $value;
+  }
+
+  public function getData() {
+    return $this->data;
+  }
 
   public function errors() {
     return array_values($this->errorMap);

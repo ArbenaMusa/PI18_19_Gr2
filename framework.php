@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/services/utils.php';
+include_once __DIR__ . '/services/utils.php';
 
 $config = arrayToObject([
   'json' => [
@@ -8,9 +8,9 @@ $config = arrayToObject([
   ]
 ]);
 
-include __DIR__ . '/services/user.php';
-include __DIR__ . '/services/users.php';
-include __DIR__ . '/services/validation.php';
+include_once __DIR__ . '/services/user.php';
+include_once __DIR__ . '/services/users.php';
+include_once __DIR__ . '/services/validation.php';
 
 class App {
   // Serviset
@@ -22,26 +22,26 @@ class App {
     $this->users = new JsonUsersManager();
   }
 
-  public function bind(array $requirements, $data = null) {
-    if (!$data) {
-      $data = $_POST;
+  public function bind(array $requirements, $source = null) {
+    if (!$source) {
+      $source = $_POST;
     }
 
-    $model = new stdClass();
+    $data = [];
     $errors = [];
     foreach ($requirements as $key => $validator) {
       $value = null;
-      if (isset($data[$key])) {
-        $value = $data[$key];
+      if (isset($source[$key])) {
+        $value = $source[$key];
       }
 
-      $model->{$key} = $value;
-      if (!$validator->validate($value, $key, $data)) {
+      $data[$key] = $value;
+      if (!$validator->validate($value, $key, $source)) {
         $errors[$key] = $validator->error;
       }
     }
 
-    return new ModelState($model, $errors);
+    return new ModelState($data, $errors);
   }
 }
 
@@ -49,23 +49,17 @@ $app = new App();
 $match = new ValidatorFactory();
 
 // MVC
-function model($props = [], $errors = []) {
-  $model = new stdClass();
-  foreach ($props as $key => $value) {
-    $model->${key} = $value;
-  }
-
-  return new ModelState($model, $errors);
+function model($data = [], $errors = []) {
+  return new ModelState($data, $errors);
 }
 
 function view(string $name, array $data = []) {
   global $app, $config;
-  $modelState = model();
+  $model = model();
   foreach ($data as $key => $value) {
     $$key = $value;
   }
 
-  $model = $modelState->model;
   include __DIR__ . '/views/' . $name . '.php';
 }
 

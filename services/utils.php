@@ -18,7 +18,15 @@ function arrayToObject($array) {
   return json_decode(json_encode($array), false);
 }
 
+interface IDynamicData {
+  public function getData();
+}
+
 function objectToArray($d) {
+  if ($d instanceof IDynamicData) {
+    $d = $d->getData();
+  }
+
   if (is_object($d)) {
     $d = get_object_vars($d);
   }

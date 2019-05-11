@@ -13,13 +13,13 @@
                 <form action="/register.php" method="POST" id="signup">
                     <h1>Create Account</h1>
                     <input type="text" placeholder="Full name" name="name" value="<?= fallback($model->name, '') ?>" />
-                    <div class="error"><?= $modelState->getError('name') ?></div>
+                    <div class="error"><?= $model->getError('name') ?></div>
                     <input type="email" placeholder="Email" name="email" value="<?= fallback($model->email, '') ?>"/>
-                    <div class="error"><?= $modelState->getError('email') ?></div>
+                    <div class="error"><?= $model->getError('email') ?></div>
                     <input type="password" placeholder="Password" name="password" value="<?= fallback($model->password, '') ?>"/>
-                    <div class="error"><?= $modelState->getError('password') ?></div>
+                    <div class="error"><?= $model->getError('password') ?></div>
                     <input type="password" placeholder="Confirm Password" name="password2" value="<?= fallback($model->password, '') ?>"/>
-                    <div class="error"><?= $modelState->getError('password2') ?></div>
+                    <div class="error"><?= $model->getError('password2') ?></div>
                     <span style="font-size: 20px">I am a:</span>
                     <?php $type = fallback($model->type, 'student') ?>
                     <input type="radio" name="type" value="teacher" <?= whenEquals($type, 'teacher', 'checked') ?>>Teacher
