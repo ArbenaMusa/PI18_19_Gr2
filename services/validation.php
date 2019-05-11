@@ -106,7 +106,7 @@ class ModelState {
     return $this->errorMap;
   }
 
-  public function getError($key) {
+  public function getError(string $key) {
     if (isset($this->errorMap[$key])) {
       return $this->errorMap[$key];
     } 
@@ -114,8 +114,8 @@ class ModelState {
   }
 
   public function isValid($key = null) {
-    if ($key === null) {
-      return empty($this->errors);
+    if ($key == null) {
+      return empty($this->errors());
     } else {
       return $this->isValidProperty($key);
     }
