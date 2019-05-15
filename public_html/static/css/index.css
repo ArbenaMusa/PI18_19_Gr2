@@ -4,6 +4,7 @@ html, body
 }
 body
 {
+	width:100%;
 	margin: 0px;
 	padding: 0px;
     background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
@@ -69,12 +70,6 @@ a:hover
 {
 	outline: none;
 }
-.button-big
-{
-	padding: 1.6em 4em;
-	font-size: 1.4em;
-	font-weight: 900;
-}
 #header-wrapper
 {
 	background: #FFF;
@@ -82,35 +77,31 @@ a:hover
 #header
 {
 	position: relative;
-	height: 100px;
-}
-#header-featured
-{
-	height: 25em;
-	background-image: url(bbb.jpg);
-	background-position: center;
-	background-size: cover;
+	height: 80px;
+	width:90%;
 }
 #header-featured h1
 {
-    float:right;
+	float:right;
+	position:relative;
     margin-right:8%;
-    margin-top:22%;
+    margin-top:25%;
     margin-bottom:0%;
     font-size:40px;
-    color:rgb(229, 147, 181);
+    color:rgb(252, 252, 252);
 }
 #logo
 {
 	position: absolute;
-	top: 16px;
+	top: 6%;
+	bottom: 6%;
 	left: 0;
 	width: 100%;
 }
 #logo h1
 {
 	display: inline-block;
-	font-size: 2.5em;
+	font-size: 45px;
 	font-weight: 700;
 	color: #2C383B;
 	padding-right: 0.50em;
@@ -125,7 +116,8 @@ a:hover
 {
 	position: absolute;
 	right: 0;
-	top: 1em;
+	top: 10%;
+	bottom:0;
 }
 #menu ul
 {
@@ -142,7 +134,7 @@ a:hover
 {
 	display: inline-block;
 	margin-left: 1px;
-	padding: 0em 1.5em;
+	padding: 0 1.5em;
 	letter-spacing: 0.10em;
 	text-decoration: none;
 	font-size: 1em;
@@ -150,7 +142,7 @@ a:hover
 	outline: 0;
 	color: #212121;
     background: #ECECEC;
-    border-radius:5px;
+	border-radius:20%;
 }
 #menu li a:active
 {
@@ -158,27 +150,30 @@ a:hover
 }
 #menu li a:hover
 {
-    
+	background-color:rgb(236, 116, 144);
+	transition-duration: 1s;
+	border-radius:50%;
 }
 #menu .current_page_item a
 {
     background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
     background: linear-gradient(to right, #FF4B2B, #FF416C);
     color: #FFF;
-    border-radius:15px;
+    border-radius:50%;
 }
 #banner-wrapper
 {
 	overflow: hidden;
 	padding: 3em 0em;
+	width:100%;
     background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
 }
 #banner
 {
 	overflow: hidden;
-	width: 1000px;
-	padding: 0px 100px;
+	width: 100%;
+	align:center;
 	text-align: center;
 	color: rgba(255,255,255,.7);
 }
@@ -186,33 +181,10 @@ a:hover
 {
 	color: rgba(255,255,255,.9);
 }
-#banner .box-left
-{
-	float: left;
-}
-#banner .box-right
-{
-	float: right;
-}
-#banner h2
-{
-	margin: 0em;
-	padding: 0em;
-	font-weight: 400;
-	font-size: 3em;
-	color: #555555;
-}
-#banner span
-{
-	display: block;
-	padding-top: 0.20em;
-	text-transform: uppercase;
-	font-size: 1.2em;
-	color: #A2A2A2;
-}
 #wrapper
 {
 	background: #FFF;
+	width:100%;
 }
 #copyright
 {
@@ -237,6 +209,7 @@ a:hover
 {
 	overflow: hidden;
 	padding: 6em 0em;
+	width:100%;
 	background: #383838;
 	text-align: center;
 }
@@ -269,13 +242,12 @@ a:hover
     background: linear-gradient(to right, #FF4B2B, #FF416C);
 	margin: 0px auto 20px auto;
 	line-height:  100px;
-	font-size: 3em;
 	text-align: center;
 	color: #FFF;
 }
 .column1,  .column2,  .column3,  .column4
 {
-	width: 282px;
+	width: 23.4%;
 }
 .column1,  .column2
 {
@@ -285,6 +257,7 @@ a:hover
 .column3
 {
 	float: left;
+	margin-right: 24px;
 }
 .column4
 {
@@ -294,12 +267,14 @@ a:hover
 {
 	overflow: hidden;
 	padding: 6em 0em;
+	width:100%;
 	background: #383838;
 	text-align: center;
 }
 #footer
 {
 	overflow: hidden;
+	width:100%;
 }
 #footer .title h2
 {
