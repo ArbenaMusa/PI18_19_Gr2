@@ -8,6 +8,7 @@ $config = arrayToObject([
   ]
 ]);
 
+include_once __DIR__ . '/services/db.php';
 include_once __DIR__ . '/services/user.php';
 include_once __DIR__ . '/services/users.php';
 include_once __DIR__ . '/services/validation.php';
@@ -16,10 +17,12 @@ class App {
   // Serviset
   public $user;
   public $users;
+  public $db;
 
   public function __construct() {
-    $this->user = new SessionUser();
-    $this->users = new JsonUsersManager();
+    $this->db = new DbConnection($this);
+    $this->user = new SessionUser($this);
+    $this->users = new SqlUsersManager($this);
   }
 
   public function bind(array $requirements, $source = null) {
@@ -63,8 +66,8 @@ function view(string $name, array $data = []) {
   include __DIR__ . '/views/' . $name . '.php';
 }
 
-function redirect(string $url, $statusCode = 303) {
-  header('Location: ' . $url, true, $statusCode);
+function redirect(string $url, $data = [], $statusCode = 303) {
+  header('Location: ' . buildLink($url, $data), true, $statusCode);
 }
 
 ?>

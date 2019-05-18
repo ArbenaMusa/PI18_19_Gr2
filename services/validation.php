@@ -8,7 +8,7 @@ interface IValidator {
 
 class RegexValidator implements IValidator {
   private $pattern;
-  
+
   public function __construct($pattern) {
     $this->pattern = $pattern;
   }
@@ -148,7 +148,7 @@ class ModelState implements IDynamicData {
   public function getError(string $key) {
     if (isset($this->errorMap[$key])) {
       return $this->errorMap[$key];
-    } 
+    }
     return null;
   }
 
@@ -158,6 +158,10 @@ class ModelState implements IDynamicData {
 
   public function clearError(string $key) {
     unset($this->errorMap[$key]);
+  }
+
+  public function clearErrors() {
+    $this->errorMap = [];
   }
 
   public function isValid($key = null) {

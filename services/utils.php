@@ -10,7 +10,7 @@ function fallback(&$a, $b) {
 function whenEquals(&$a, $b, $msg) {
   if ($a && $a == $b) {
     return $msg;
-  } 
+  }
   return '';
 }
 
@@ -42,6 +42,18 @@ function objectToArray($d) {
 
 function stringEquals($str1, $str2) {
   return strcasecmp($str1, $str2) == 0;
+}
+
+function queryString(&$data) {
+  if (isset($data) && count($data) > 0) {
+    return '?' . http_build_query($data);
+  } else {
+    return '';
+  }
+}
+
+function buildLink($url, $data = []) {
+  return $url . queryString($data);
 }
 
 // Array utils
