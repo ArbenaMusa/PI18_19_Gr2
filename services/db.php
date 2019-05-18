@@ -41,11 +41,11 @@ class SafeQuery {
 }
 
 class DbConnection {
-  private $servername = 'remotemysql.com';
-  private $username = 'UyjaYuQm1b';
-  private $password = 'jcs1ODHZod';
-  private $dbname = 'UyjaYuQm1b';
-  private $port = '3306';
+  private $servername;
+  private $username;
+  private $password;
+  private $dbname;
+  private $port;
   private $connection;
 
   private function prepareSql($sql, $args) {
@@ -63,6 +63,11 @@ class DbConnection {
   }
 
   public function __construct() {
+    $this->servername = $_ENV['DB_SERVER'];
+    $this->username = $_ENV['DB_USER'];
+    $this->password = $_ENV['DB_PASS'];
+    $this->dbname = $_ENV['DB_NAME'];
+    $this->port = $_ENV['DB_PORT'];
     $this->connection = new mysqli($this->servername, $this->username, $this->password, $this->dbname, $this->port);
   }
 
