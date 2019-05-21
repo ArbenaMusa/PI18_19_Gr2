@@ -11,6 +11,10 @@ class SessionUser implements IUser {
     session_start();
   }
 
+  public function id() {
+    return isset($_SESSION['id']) ? $_SESSION['id'] : null;
+  }
+
   public function name() {
     return isset($_SESSION['name']) ? $_SESSION['name'] : null;
   }
@@ -21,6 +25,10 @@ class SessionUser implements IUser {
 
   public function type() {
     return isset($_SESSION['type']) ? $_SESSION['type'] : null;
+  }
+
+  public function title() {
+    return isset($_SESSION['title']) ? $_SESSION['title'] : null;
   }
 
   public function loggedIn() {

@@ -17,7 +17,7 @@ class SafeQuery {
       $pattern,
       function ($matches) use ($connection, $count, &$i) {
         if ($i >= $count) {
-          throw new Exception("Mosperputhje e parametrave tek $this->sql.");
+          throw new Exception("Parameters dont match at $this->sql.");
         }
         $parameter = $this->parameters[$i++];
         switch ($matches[1]) {
@@ -28,9 +28,8 @@ class SafeQuery {
             if (preg_match($numberPattern, $parameter)) {
               return $parameter;
             } else {
-              throw new Exception("Vlere jo numerike $parameter.");
+              throw new Exception("Not a numerical value: $parameter.");
             }
-
           default:
             return $matches[0];
         }

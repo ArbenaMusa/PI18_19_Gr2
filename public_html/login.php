@@ -1,7 +1,6 @@
 <?php
 
 if ($app->user->loggedIn()) {
-  // Vecse jemi te loguar, shko ne index.
   return redirect('/index.php');
 }
 
