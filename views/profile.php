@@ -1,9 +1,7 @@
-<html>
-<head>
-<title>
-</title>
-<link rel="stylesheet" href=" /static/css/profile.css"/>
-</head>
+<?= view('layout/main_header', [
+  'css' => '/static/css/profile.css',
+  'title' => $app->user->name() . "'s profile"
+]) ?>
 <body>
   <div class="resume-wrapper">
   <article class="paper">

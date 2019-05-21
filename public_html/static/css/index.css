@@ -90,6 +90,13 @@ a:hover
     font-size:40px;
     color:rgb(252, 252, 252);
 }
+#header-featured
+{
+	height: 70%;
+	background-image: url(/static/img/pano_teacher.jpg);
+	background-position: center;
+	background-size: cover;
+}
 #logo
 {
 	position: absolute;
@@ -313,7 +320,7 @@ a:hover
 	font-size: 1.2em;
 	color: #A2A2A2;
 }
-@charset 'UTF-8';
+
 @font-face
 {
 	font-family: 'FontAwesome';
