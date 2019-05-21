@@ -1,0 +1,160 @@
+* {
+  padding-top:5;
+  margin:0;
+}
+body {
+      background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+      background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+header {
+  width:100%;
+  vertical-align: middle;
+  text-align: center;
+}
+.header-content {
+  display: inline-block;
+}
+.pic {
+  margin: 0 auto;
+  margin-top:40px;
+  height:64px;
+  width:64px;
+  background-image: url(https://pbs.twimg.com/profile_images/529377948952834048/q9fhJEKd.jpeg);
+  background-size: 100% auto;
+  border: 2px solid #e0e0e0;
+}
+.header-text {
+  margin-top:8px;
+  margin-left:16px;
+}
+header p {
+  text-align:center;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin:0;
+  color: #212121;
+}
+.first-name {
+   font-size:25;
+}
+.subtitle {
+  font-family:'Source Sans Pro', sans-serif;
+  padding-top:30px;
+  font-size:10px;
+  font-weight:500;
+  color: #424242;
+}
+.paper {
+  margin: 0 auto;
+  margin-bottom:16PX;
+  width:60%;
+  padding:8PX 0 8PX 0;
+  border-radius:3px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+		          0 10px 10px rgba(0,0,0,0.22);
+}
+.content-wrapper {
+  padding-right:7.25%;
+}
+.content {
+  display:table;
+  width:100%;
+  padding-top:24px;
+}
+.content:last-child {
+  padding-bottom:24px;
+}
+.row {
+    display:table-row;
+}
+.row div {
+    display:table-cell;
+}
+.content-cat {
+  font-family:'Source Sans Pro', sans-serif;
+  font-variant:small-caps;
+  font-weight:300;
+  letter-spacing: 1px;
+  color: #212121;
+  font-size:15px;
+  text-align:center;
+  vertical-align:middle;
+  padding-left:6.66%;
+  width:36.66%;
+}
+.content-cat p {
+  font-size:8px;
+  font-weight:600;
+  margin-bottom:0;
+}
+.content-text {
+  border-left:1px solid #e0e0e0;
+}
+.content-text:hover {
+  border-left:1px solid #bdbdbd;
+}
+.big-text {
+  vertical-align:top;
+  padding-top:20px;
+}
+.content-text ul {
+  padding:0;
+  margin:0;
+  margin-top:2px;
+  width:85%;
+  margin-left:1.5em;
+}
+.content-text ul:last-child {
+  margin-bottom:24px;
+}
+.content-text ul li {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:11px;
+  display:inline-block;
+}
+.content-text ul li:first-child {
+  width:35%;
+  color: #424242;
+  font-weight:600;
+  font-size:0.75px;
+}
+.content-text ul li a {
+  text-decoration: none;
+  color: #0277bd;
+}
+.content-text ul li a:hover {
+  color:#4fc3f7;
+}
+.work-listing p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:0.7em;
+  font-weight:400;
+  line-height:1.5px;
+  color:#000;
+  margin-left:32px;
+  margin-top:4px;
+  margin-bottom:12px;
+}
+.education-listing > .heading {
+  font-weight:600;
+  margin-top:12px;
+  margin-left:32px;
+}
+.content-text.skills-listing > ul {
+  display:table-row;
+}
+.content-text.skills-listing > ul:last-child {
+  margin-bottom:0;
+}
+.content-text.skills-listing > ul > li {
+  display:table-cell;
+  vertical-align:top;
+  padding-left:32px;
+  width:50%;
+  font-weight:600;
+}
+.content-text.skills-listing > ul > li span {
+  font-weight:400;
+  color: #616161;
+}
