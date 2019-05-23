@@ -11,7 +11,9 @@ if (!POST) {
 $model = $app->bind([
   'name' => $match->regex('/^\s*([a-zA-Z]+)\s+([a-zA-Z]+)\s*$/', 'Fusha duhet te permbaj emrin dhe mbiemrin'),
   'email' => $match->email(),
-  'title' => $match->title()
+  'title' => $match->title(),
+  'website' => $match->website(),
+  'phone' => $match->phone()
 ]);
 
 if (!$model->isValid()) {
@@ -20,8 +22,12 @@ if (!$model->isValid()) {
   ]);
 }
 
-$query = "UPDATE users(name, email, title) SET name = %s, email = %s, title = %s WHERE id = %d";
-if(!$db->execute($query, $model->name, $model->email, $model->title, $app->user->id())) {
+$query = <<<SQL
+UPDATE users(name, email, title, website, phone)
+SET name = %s, email = %s, title = %s, website = %s, phone = %s
+WHERE id = %d
+SQL;
+if(!$db->execute($query, $model->name, $model->email, $model->title, $model->website, $model->phone, $app->user->id())) {
   return view('profile', [
     'error' => "There has been an error, please try again."
   ]);

@@ -50,6 +50,12 @@ class EitherValidator implements IValidator {
   }
 }
 
+class NoValidator implements IValidator {
+  public function validate($value, $key, $data) {
+    return true;
+  }
+}
+
 class RequiredValidator implements IValidator {
   public function validate($value, $key, $data) {
     return !!$value;
@@ -71,32 +77,48 @@ class ValidatorPair {
 }
 
 class ValidatorFactory {
-  public function regex($pattern, $error = 'Vlera e dhene nuk eshte valide.') {
+  public function regex($pattern, $error = 'Invalid value') {
     return new ValidatorPair(new RegexValidator($pattern), $error);
   }
 
-  public function integer($error = 'Vlera e dhene nuk eshte numer valid.') {
+  public function integer($error = 'Not a number') {
     return new ValidatorPair(new RegexValidator('\d+'), $error);
   }
 
-  public function real($error = 'Vlera e dhene nuk eshte numer valid.') {
+  public function real($error = 'Not a number') {
     return new ValidatorPair(new RegexValidator('\d+(\.\d+)?'), $error);
   }
 
-  public function email($error = 'Email i dhene nuk eshte email valid.') {
+  public function email($error = 'Invalid email') {
     return new ValidatorPair(new EmailValidator(), $error);
   }
 
-  public function equals($other, $error = 'Fushat duhet te perputhen.') {
+  public function equals($other, $error = 'Fields dont match') {
     return new ValidatorPair(new EqualsValidator($other), $error);
   }
 
-  public function either($options, $error = 'Fushe jo valide.') {
+  public function either($options, $error = 'Invalid') {
     return new ValidatorPair(new EitherValidator($options), $error);
   }
 
-  public function required($error = 'Fushe e kerkuar.') {
+  public function required($error = 'Required') {
     return new ValidatorPair(new RequiredValidator(), $error);
+  }
+
+  public function noValidation($error = '') {
+    return new ValidatorPair(new NoValidator(), $error);
+  }
+
+  public function phone($error = 'Invalid phone number') {
+    return new ValidatorPair(new RegexValidator('/^[+]?[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/'), $error);
+  }
+
+  public function title($error = 'Invalid title') {
+    return new ValidatorPair(new RegexValidator('/^[A-Za-z\.]{0,4}$/'), $error);
+  }
+
+  public function website($error = 'Invalid website') {
+    return new ValidatorPair(new RegexValidator("/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/"), $error);
   }
 }
 
