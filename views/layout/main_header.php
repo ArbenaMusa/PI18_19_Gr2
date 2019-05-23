@@ -6,6 +6,7 @@
     <title><?= fallback($title, "StuDB") ?></title>
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     <link rel="stylesheet" href="<?= $css ?>"/>
+    <link rel="stylesheet" href="/static/css/main_header_footer.css"/>
   </head>
   <body>
     <div id="header-wrapper">
