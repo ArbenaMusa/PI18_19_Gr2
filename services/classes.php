@@ -38,7 +38,7 @@ SQL;
 
   public function viewList() {
     $query = <<<SQL
-    SELECT classname
+    SELECT cls.classname
     FROM classes cls
     INNER JOIN teaches t
     ON cls.id = t.classId

@@ -22,18 +22,22 @@ if (!$model->isValid()) {
   ]);
 }
 
-$user = $app->users->check($model->email, $model->password);
-if ($user) {
-  // Login success
-  $app->user->logIn($user);
-  return redirect('/index.php');
+$result = $app->users->check($model->email, $model->password);
+
+
+if ($result->isError) {
+  $model->setError('status_l', $result->error);
+  return view('login', [
+    'panel' => 'login',
+    'model' => $model
+  ]);
 }
 
-// Login error
-$model->setError('status', 'Email ose fjalëkalimi i gabuar.');
-return view('login', [
-  'panel' => 'login',
-  'model' => $model
-]);
+$user = $result->value;
+
+// Login success
+$app->user->logIn($user);
+return redirect('/index.php');
+
 
 ?>

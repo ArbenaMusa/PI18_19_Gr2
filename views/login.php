@@ -8,10 +8,12 @@
         <title>StuDB</title>
     </head>
     <body>
+        <div class="success"><?= fallback($message, null) ?></div>
         <div class="container <?php if ($panel == 'register') echo 'right-panel-active' ?>" id="container">
             <div class="form-container sign-up-container">
                 <form action="/register.php" method="POST" id="signup">
                     <h1>Create Account</h1>
+                    <div class="error"><?= $model->getError('status_r') ?></div>
                     <input type="text" placeholder="Full name" name="name" value="<?= fallback($model->name, '') ?>" />
                     <div class="error"><?= $model->getError('name') ?></div>
                     <input type="email" placeholder="Email" name="email" value="<?= fallback($model->email, '') ?>"/>
@@ -30,7 +32,7 @@
             <div class="form-container sign-in-container">
                 <form action="/login.php" method="POST" id="signin">
                     <h1>Sign in</h1>
-                    <div class="error"><?= $model->getError('status') ?></div>
+                    <div class="error"><?= $model->getError('status_l') ?></div>
                     <input type="email" name="email" placeholder="Email" value="<?= fallback($model->email, '') ?>"/>
                     <div class="error"><?= $model->getError('email') ?></div>
                     <input type="password" name="password" placeholder="Password" />

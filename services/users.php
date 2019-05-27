@@ -53,33 +53,43 @@ class SqlUsersManager implements IUsersManager {
   }
 
   public function create($data) {
+    // 0 = success
+    // 1 = email is in use
+    // 2 = db error
     $db = $this->app->db;
 
     $checkForDuplicate = 'SELECT * FROM users WHERE email = %s';
     if ($db->exists($checkForDuplicate, $data->email)) {
-      return true;
+      return 1;
     }
 
-    $query = "INSERT INTO users(name, email, password, type) VALUES(%s, %s, %s, %s)";
-    if(!$db->execute($query, $data->name, $data->email, $data->password, $data->type)) {
-      return true;
+    $query = "INSERT INTO users(name, email, password, type, verified) VALUES(%s, %s, %s, %s, %d)";
+    if(!$db->execute($query, $data->name, $data->email, $data->password, $data->type, 0)) {
+      return 2;
     }
 
-    return false;
+    return 0;
   }
 
   public function check($email, $password) {
+    // 0 = success
+    // 1 = email/password wrong
+    // 2 = email not verified
     $db = $this->app->db;
 
     $user = $db->first('SELECT * FROM users WHERE email=%s', $email);
     if (!$user) {
-      return false;
+      return makeError('Email or password is wrong.');
+    }
+
+    if ($user->verified == 0) {
+      return makeError('Email is not verified');
     }
 
     if (password_verify($password, $user->password)) {
-      return $user;
+      return makeResult($user);
     } else {
-      return null;
+      return makeError('Email or password is wrong.');
     }
   }
 }

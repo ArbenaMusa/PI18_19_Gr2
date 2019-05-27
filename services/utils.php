@@ -78,4 +78,34 @@ function &find(&$array, $predicate) {
   return null;
 }
 
+class Result {
+
+  public $value;
+  public $error;
+  public $isError;
+
+  public function __construct($val, $isError = false) {
+    if($isError) {
+      $this->value = null;
+      $this->error = $val;
+    } else {
+      $this->value = $val;
+      $this->error = null;
+    }
+    $this->isError = $isError;
+  }
+}
+
+function makeResult($val) {
+  return new Result($val, false);
+}
+
+function makeError($error) {
+  return new Result($error, true);
+}
+
+function writeLog($txt = "") {
+  file_put_contents(__DIR__ . '/../log.txt', $txt . PHP_EOL, FILE_APPEND | LOCK_EX);
+}
+
 ?>

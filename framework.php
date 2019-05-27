@@ -12,17 +12,20 @@ include_once __DIR__ . '/services/db.php';
 include_once __DIR__ . '/services/user.php';
 include_once __DIR__ . '/services/users.php';
 include_once __DIR__ . '/services/validation.php';
+include_once __DIR__ . '/services/email.php';
 
 class App {
   // Serviset
   public $user;
   public $users;
   public $db;
+  public $email;
 
   public function __construct() {
     $this->db = new DbConnection($this);
     $this->user = new SessionUser($this);
     $this->users = new SqlUsersManager($this);
+    $this->email = new EmailManager($this);
   }
 
   public function bind(array $requirements, $source = null) {
