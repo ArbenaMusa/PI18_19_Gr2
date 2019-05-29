@@ -1,6 +1,6 @@
 <!-- </View> -->
         <div id="copyright" class="container">
-            <p></a> | </a></p>
+            <p><a> Copyrights|.......... </a></p>
         </div>
     </body>
 </html>
