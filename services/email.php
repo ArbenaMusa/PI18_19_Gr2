@@ -3,6 +3,7 @@
 interface IEmailSender {
   public function verifyEmail($email, $id);
   public function resetPassword($email);
+  public function joinClass();
 }
 
 class EmailManager implements IEmailSender {
@@ -13,6 +14,7 @@ class EmailManager implements IEmailSender {
     writeLog($msg);
 
     if(!mail($model->email, $subject, $msg)) {
+      logError('Error sending mail to ' . $model->email);
       return false;
     }
 
@@ -20,6 +22,10 @@ class EmailManager implements IEmailSender {
   }
 
   public function resetPassword($email) {
+
+  }
+
+  public function joinClass() {
 
   }
 }

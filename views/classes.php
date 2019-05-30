@@ -4,7 +4,14 @@
     'javascript' => '/static/js/class.js'
 ]);?>
 <div style="padding-left:5%; padding-right:5%; padding-top:15px;">
-  <?php view('layout/class_menu');?>
+  <?php
+  view('layout/class_menu');
+
+  if(!$classData) {
+    return view('empty_class');
+  }
+  ?>
+
     <div class="class_view">
       <div class="class_menu">
         <ul>
@@ -17,7 +24,7 @@
       <div class="content" style="display:block">
         <div class="clearfix">
           <div class="box">
-            <p><b>Professor: <?php //variabla ?></b></p>
+            <p><b>Professor: <?= $classData->teacherName ?></b></p>
           </div>
           <div class="box">
             <p><b>Assistant Professor: <?php //variabla ?></b></p>
@@ -50,13 +57,13 @@
 <div class="popup" id="popup">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" method="post">
-        <label for="className">Class Name</label>
-        <input type="text" id="className" name="className" placeholder="Class name.." value="" required>
+      <form action="/classes_add.php" method="post">
+        <label for="classname">Class Name</label>
+        <input type="text" id="classname" name="classname" placeholder="Class name.." value="" required>
         <label for="semester">Semester</label>
-        <input type="text" id="semester" name="Semester" placeholder="Semester.." value="" required>
+        <input type="text" id="semester" name="semester" placeholder="Semester.." value="" required>
         <label for="no_of_groups">Number of groups</label></br>
-        <input list="no_of_groups" name="no_of_gruops" placeholder="Number of groups.." value="">
+        <input list="no_of_groups" name="no_of_groups" placeholder="Number of groups.." value="">
         <datalist id="no_of_groups" >
           <option value="1">
           <option value="2">

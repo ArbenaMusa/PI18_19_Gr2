@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SQL Query</title>
+  <style>
+  textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+  }
+
+  .textwrapper {
+    margin: 3px 0;
+    padding: 3px;
+  }
+  </style>
 </head>
 <body>
   <?php
@@ -14,8 +26,9 @@
   }
   ?>
   <form method="post" action="/db_query.php">
-    <textarea name="query"><?= htmlentities($query) ?></textarea>
-    <br />
+    <div class="textwrapper">
+      <textarea name="query" rows="7"><?= htmlentities($query) ?></textarea>
+    </div>
     <input type="submit" value="Send" />
   </form>
   <br />

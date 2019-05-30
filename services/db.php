@@ -57,6 +57,7 @@ class DbConnection {
         return $sql;
       }
     } catch (Exception $e) {
+      logError($e->getMessage());
       return null;
     }
   }
@@ -82,6 +83,7 @@ class DbConnection {
 
     $result = mysqli_query($this->connection, $sql);
     if (!$result) {
+      logError($this->error());
       return null;
     }
 
@@ -103,6 +105,7 @@ class DbConnection {
 
     $result = mysqli_query($this->connection, $sql);
     if (!$result) {
+      logError($this->error());
       return null;
     }
 
@@ -138,6 +141,7 @@ class DbConnection {
 
     $result = mysqli_query($this->connection, $sql);
     if (!$result) {
+      logError($this->error());
       return null;
     }
 
@@ -158,8 +162,13 @@ class DbConnection {
     if (mysqli_multi_query($this->connection, $sql)) {
       return true;
     } else {
+      logError($this->error());
       return false;
     }
+  }
+
+  public function insertedId() {
+    return mysqli_insert_id($this->connection);
   }
 
   public function getConnection() {
