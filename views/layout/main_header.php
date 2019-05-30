@@ -21,7 +21,6 @@
             <li class="current_page_item"><a href="index.php" title="">Menu 1</a></li>
             <li><a href="#" title="">Menu 2</a></li>
             <li><a href="#" title="">Menu 3</a></li>
-            <li><a href="#" title="">Menu 3</a></li>
             <li><a href="#" title="">Menu 4</a></li>
             <li>
               <div class="dropdown">
