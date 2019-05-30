@@ -6,6 +6,7 @@
     <title><?= fallback($title, "StuDB") ?></title>
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     <link rel="stylesheet" href="<?= $css ?>"/>
+    <script type="text/javascript" src="<?= $javascript?>"></script>
     <link rel="stylesheet" href="/static/css/main_header_footer.css"/>
   </head>
   <body>
@@ -17,7 +18,7 @@
         </div>
         <div id="menu">
           <ul>
-            <li class="current_page_item"><a href="#" title="">Menu 1</a></li>
+            <li class="current_page_item"><a href="index.php" title="">Menu 1</a></li>
             <li><a href="#" title="">Menu 2</a></li>
             <li><a href="#" title="">Menu 3</a></li>
             <li><a href="#" title="">Menu 3</a></li>
@@ -29,9 +30,9 @@
                   <img src="/static/img/avatar.png" alt="Avatar" width="200" height="200" style="border: #FF4B2B solid 2px;">
                   <div class="personal"><?= $app->user->name() ?></div>
                     <a href="/profile.php">Profile</a>
-                    <a href="/logout.php"><button class="button1">Sign out</button></a></div>
-                  </div>
+                    <a href="/logout.php"><button class="button1">Sign out</button></a>
                 </div>
+              </div>
             </li>
           </ul>
         </div>

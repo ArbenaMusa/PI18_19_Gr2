@@ -50,8 +50,9 @@ if(!$app->db->execute($query, $model->email)) {
 }
 
 if(!$app->email->verifyEmail($model, $id)) {
-  return view('register', [
-    'message' => 'There has been an error with the registration, please try again.'
+  return view('login', [
+    'message' => 'There has been an error with the registration, please try again.',
+    'panel' => 'register'
   ]);
 }
 

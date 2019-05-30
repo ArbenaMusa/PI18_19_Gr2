@@ -14,6 +14,11 @@ body
 	font-weight: 300;
 	color: #6c6c6c
 }
+.container
+{
+	margin: 0px auto;
+	width: 1200px;
+}
 h1, h2, h3
 {
 	margin: 0;
@@ -64,7 +69,7 @@ a:hover
 .button:focus
 {
 	outline: none;
-
+}
 #header-featured h1
 {
 	float:right;
