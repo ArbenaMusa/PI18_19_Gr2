@@ -9,68 +9,75 @@ body
 	font-weight: 300;
 	color: #6c6c6c;
 }
-.vertical-menu {
-    width: 15vw;
-    height: 80vh;
-    display:inline-block;
-    position:static;
-    overflow-y: auto;
-    border-radius:10px;
-  }
-  .vertical-menu a {
-    background-color: #eee;
-    color: black;
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-  }
-
-  .vertical-menu a:hover {
-    background-color: #ccc;
-  }
-
-  .vertical-menu a.active {
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
-    color: white;
-  }
-  .class_view
-  {
-      background: #eee;
-      width:72vw;
-      height:80vh;
-      border-radius:10px;
-      float:right;
-  }
-  .class_menu ul {
-    list-style-type: none;
-    overflow: hidden;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
-    position: static;
-    padding-top: 0;
-    margin-top:0;
-    margin-bottom:10px;
-    width:69vw;
-    border-radius: 10px 10px 0px 0px;
-  }
-  .class_menu li {
-    float: left;
-  }
-  .class_menu li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  .class_menu li a:hover:not(.active) {
-    background-color:rgb(128, 44, 38);
-  }
-  .class_menu .active {
-    background-color: #eee;
-    color:black;
-  }
+.vertical-menu
+{
+  width: 15vw;
+  height: 80vh;
+  display:inline-block;
+  position:static;
+  overflow-y: auto;
+  border-radius:10px;
+}
+.vertical-menu a
+{
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+.vertical-menu a:hover
+{
+  background-color: #ccc;
+}
+.vertical-menu a.active
+{
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  color: white;
+}
+.class_view
+{
+  background: #eee;
+  width:72vw;
+  height:80vh;
+  border-radius:10px;
+  float:right;
+}
+.class_menu ul
+{
+  list-style-type: none;
+  overflow: hidden;
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  position: static;
+  padding-top: 0;
+  margin-top:0;
+  margin-bottom:10px;
+  width:69vw;
+  border-radius: 10px 10px 0px 0px;
+}
+.class_menu li
+{
+  float: left;
+}
+.class_menu li a
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.class_menu li a:hover:not(.active)
+{
+  background-color:rgb(128, 44, 38);
+}
+.class_menu .active
+{
+  background-color: #eee;
+  color:black;
+}
 .content
 {
   display:none;
@@ -179,7 +186,8 @@ body
   font-size: 12px;
   font-weight: bold;
 }
-input[type=text], select, textarea {
+input[type=text], select, textarea
+{
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -283,21 +291,13 @@ input[list]
 {
   outline: none;
 }
-/* cdfjbsdfbsdfbjsdbfjdsbfhsdbf */
-.container {
+.containerA {
   border: 0.3px solid #FF4B2B;
   background-color: #f1f1f1;
   border-radius: 15px;
   padding:20px;
-  /* margin: 20px 20px; */
-
 }
-/* .container:hover{
-  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  background: linear-gradient(to right, #FF4B2B, #FF416C);
-  transition: width 4s;
-} */
-.container span{
+.containerA span{
   font-size: 15px;
   padding-bottom: 2px;
 }
@@ -315,13 +315,11 @@ input[list]
   padding-right: 20px;
   padding-bottom: 10px;
 }
-
 .identification{
   margin:0;
   font-size:15px;
   color: #fff;
 }
-
 .container_color {
   background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
   background: linear-gradient(to right, #FF4B2B, #FF416C);
@@ -333,13 +331,13 @@ input[list]
 .container_color span{
   font-size: 15px;
 }
-.container::after {
+.containerA::after {
   content: "";
   clear: both;
   display: table;
 }
 
-.container img.right {
+.containerA img.right {
   float: right;
   padding-right: 20px;
   padding-bottom: 30px;
@@ -365,4 +363,38 @@ input[list]
   border-radius: 20px;
   padding: 3px;
   margin: 10px 10px;
+}
+table
+{
+  border-radius: 30px;
+  padding:10px;
+  background-color: #FFE3C6;
+  width: 100%;
+  text-align: center;
+}
+table th
+{
+  border-radius: 30px;
+}
+table td
+{
+  border: 1px solid #948473;
+  padding: 4px 4px;
+}
+table tbody td
+{
+  font-size: 13px;
+}
+table thead
+{
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+table thead th
+{
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #F0F0F0;
+  text-align: left;
 }

@@ -18,10 +18,11 @@
           <li><a class="classA active" onclick="currentClass(1)">ClassInfo</a></li>
           <li><a class="classA" onclick="currentClass(2)">Q&A</a></li>
           <li><a class="classA" onclick="currentClass(3)">Resources</a></li>
-          <li><a class="classA" onclick="currentClass(4)">Private Chat</a></li>
+          <li><a class="classA" onclick="currentClass(4)">StudentData</a></li>
         </ul>
       </div>
-      <div class="content" style="display:block">
+      <!-- Class Info -->
+      <div class="content" style="display:block" id="ClassInfo">
         <div class="clearfix">
           <div class="box">
             <p><b>Professor: <?= $classData->teacherName ?></b></p>
@@ -34,13 +35,16 @@
               {
                 echo "<a href=\"#popup2\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Add an announcement</a>";
                 echo "<a href=\"#popup1\" class=\"button1\" style=\"text-decoration:none; margin-right:40px;\">Change mentors</a>";
+                echo "<a href=\"#popup3\" class=\"button1\" style=\"text-decoration:none; margin-right:10px;\">Group Students</a>";
+                echo "<a href=\"#popup0\" class=\"button1\" style=\"text-decoration:none; margin-right:10px;\">Invite Students</a>";
               }
         ?></br></br>
         <div class="clearfix1">
           <!--shfaqen lajmet -->
         </div>
       </div>
-      <div class="content">
+      <!-- Q&A -->
+      <div class="content" id="Q&A">
         <a href="#popup5" class="button1" style="float:left; text-decoration:none; margin-left:40px;">Ask</a><br /><br />
         <div class="clearfix2">
           <!--shfaqen pytjet-->
@@ -53,8 +57,10 @@
               <p class="answers"> Pergjigjje dsdfdsfsdfd edhvedhvefhvewfvedvekdve ef ef rf  f rf rf fefsef sfrgfrwgwrf</p>
             </div>
           </div>
+        </div>
       </div>
-      <div class="content">
+      <!-- Resources -->
+      <div class="content" id="Resources">
         <?php if($app->user->type() == 'teacher')
               {
                 echo "<a href=\"#popup4\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Add resources</a>";
@@ -64,32 +70,19 @@
           <!--shfaqen resurset -->
         </div>
       </div>
-      <div class="content"></div>
+      <!-- StudentData -->
+      <div class="content" id="StudentData">
+        <?php if($app->user->type() == 'teacher')
+              {
+                echo "<a href=\"#popup6\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Attendance</a>";
+                echo "<a href=\"#popup7\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Project Evaluation</a>";
+                echo "<button class=\"button1\">Export Data</button>";
+              }
+        ?>
+      </div>
     </div>
-<div>
-<div class="popup" id="popup">
-  <div class="popup_inner">
-    <div class="popup_text">
-      <form action="/classes_add.php" method="post">
-        <label for="classname">Class Name</label>
-        <input type="text" id="classname" name="classname" placeholder="Class name.." value="" required>
-        <label for="semester">Semester</label>
-        <input type="text" id="semester" name="semester" placeholder="Semester.." value="" required>
-        <label for="no_of_groups">Number of groups</label></br>
-        <input list="no_of_groups" name="no_of_groups" placeholder="Number of groups.." value="">
-        <datalist id="no_of_groups" >
-          <option value="1">
-          <option value="2">
-          <option value="3">
-          <option value="4">
-        </datalist>
-        </br> </br>
-        <input type="submit" value="Create">
-      </form>
-    </div>
-    <a href="" class="popup_close">X</a>
-  </div>
 </div>
+<!-- Invite Students -->
 <div class="popup" id="popup0">
   <div class="popup_inner">
     <div class="popup_text">
@@ -109,9 +102,10 @@
         <input type="submit" value="Invite">
       </form>
     </div>
-    <a href="" class="popup_close">X</a>
+    <a href="#ClassInfo" class="popup_close">X</a>
   </div>
 </div>
+<!-- Change Mentors -->
 <div class="popup" id="popup1">
   <div class="popup_inner">
     <div class="popup_text">
@@ -123,17 +117,18 @@
         <input type="submit" value="Change">
       </form>
     </div>
-    <a href="" class="popup_close">X</a>
+    <a href="#ClassInfo" class="popup_close">X</a>
   </div>
 </div>
+<!-- Add an announcement -->
 <div class="popup" id="popup2">
   <div class="popup_inner">
     <div class="popup_text">
       <form action="#" method="post">
         <label for="subject">Subject</label>
         <input type="text" id="subject" name="subject" placeholder="Subject.." value="" required>
-        <label for="content">Content</label>
-        <textarea rows="4" cols="50" id="content" name="content" placeholder="Content.." value=""></textarea>
+        <label for="contentA">Content</label>
+        <textarea rows="4" cols="50" id="contentA" name="contentA" placeholder="Content.." value=""></textarea>
         <label for="hashtags">Hashtags</label></br>
         <input type="text" id="hashtags" name="hashtags" placeholder="Hashtags.." value="" required>
         <label for="attachment">PDF Attachment</label></br>
@@ -143,10 +138,11 @@
         </br>
         <input type="submit" value="Publish">
       </form>
-      <a href="" class="popup_close">X</a>
+      <a href="#ClassInfo" class="popup_close">X</a>
     </div>
   </div>
 </div>
+<!-- Group Students -->
 <div class="popup" id="popup3">
   <div class="popup_inner">
     <div class="popup_text">
@@ -155,9 +151,10 @@
         <input type="submit" value="Group">
       </form>
     </div>
-    <a href="" class="popup_close">X</a>
+    <a href="#ClassInfo" class="popup_close">X</a>
   </div>
 </div>
+<!-- Add Resources -->
 <div class="popup" id="popup4">
   <div class="popup_inner">
     <div class="popup_text">
@@ -175,10 +172,11 @@
         <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple></br>
         <input type="submit" value="Add resources">
       </form>
-      <a href="" class="popup_close">X</a>
+      <a href="#Resouces" class="popup_close">X</a>
     </div>
   </div>
 </div>
+<!-- Ask a question -->
 <div class="popup" id="popup5">
   <div class="popup_inner">
     <div class="popup_text">
@@ -189,7 +187,46 @@
         <textarea rows="4" cols="50" id="questsion_content" name="question_content" placeholder="Ask a question.." value=""></textarea><br />
         <input type="submit" value="Ask">
       </form>
-      <a href="" class="popup_close">X</a>
+      <a href="#Q&A" class="popup_close">X</a>
+    </div>
+  </div>
+</div>
+<!-- Attendance -->
+<div class="popup" id="popup6">
+  <div class="popup_inner">
+    <div class="popup_text">
+      <div class="clearfix3">
+        <form action="" method="post">
+          <table>
+            <thead>
+              <tr>
+                <td>StudentId</td>
+                <td>Name</td>
+                <td>Attendance</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <input type="submit" value="Add Data">
+       </form>
+      </div>
+      <a href="#SudentData" class="popup_close">X</a>
+    </div>
+  </div>
+</div>
+<!-- Project Evaluation -->
+<div class="popup" id="popup7">
+  <div class="popup_inner">
+    <div class="popup_text">
+      <form action="" method="post">
+      </form>
+      <a href="#StudentData" class="popup_close">X</a>
     </div>
   </div>
 </div>
