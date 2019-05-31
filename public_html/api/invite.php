@@ -22,7 +22,7 @@ $userId = $app->user->id();
 
 $query = <<<SQL
 INSERT INTO invite(token, classId, creator, state)
-VALUES('$token', %d, $userId, 1)
+VALUES('$token', %d, '$userId', 1)
 SQL;
 
 if (!$app->db->execute($query, $classId)) {

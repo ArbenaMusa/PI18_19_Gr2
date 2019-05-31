@@ -106,6 +106,13 @@ function makeError($error) {
   return new Result($error, true);
 }
 
+function siteURL() {
+  $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ||
+    $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+  $domainName = $_SERVER['HTTP_HOST'];
+  return $protocol . $domainName;
+}
+
 // Log utils
 
 function get_caller_info() {
@@ -151,13 +158,6 @@ function writeLog($txt = "") {
 
 function logError($msg = '') {
   writeLog('[Error@' . $_SERVER['PHP_SELF'] . '] ' . get_caller_info() . ': ' . $msg);
-}
-
-function siteURL() {
-  $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ||
-    $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-  $domainName = $_SERVER['HTTP_HOST'];
-  return $protocol . $domainName;
 }
 
 ?>

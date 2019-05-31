@@ -2,7 +2,7 @@
 
 $classId = fallback($_GET['id'], null);
 $classData = null;
-if($classId) {
+if ($classId) {
   $classData = $app->classes->find($classId);
 }
 
