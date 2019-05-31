@@ -21,8 +21,8 @@ function shareClass(id) {
   })
     .then(toJson)
     .then(function (response) {
-      // TODO: Mutate DOM to show link
-      alert('Class shared, copy this link: ' + response.link)
+      var inviteLink = document.getElementById('inviteLink');
+      inviteLink.value = response.link;
     })
     .catch(function (error) {
       handleError(error)

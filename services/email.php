@@ -3,7 +3,7 @@
 interface IEmailSender {
   public function verifyEmail($email, $id);
   public function resetPassword($email);
-  public function joinClass();
+  public function inviteEmail($link, $email);
 }
 
 class EmailManager implements IEmailSender {
@@ -25,8 +25,14 @@ class EmailManager implements IEmailSender {
 
   }
 
-  public function joinClass() {
+  public function inviteEmail($link, $email) {
+    $subject = 'Class invitation - StuDB';
+    $msg = 'You have been invited to join a class in StuDB, click the link to join\n' . $link;
+    writeLog($msg);
 
+    if(!mail($email, $subject, $msg)) {
+      logError('Error sending mail to ' . $email);
+    }
   }
 }
 

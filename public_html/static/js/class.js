@@ -22,7 +22,8 @@ function showClass(n) {
     classT[classIndex-1].style.display = "block";
     men[classIndex-1].className += " active";
   }
-  function currentClass(n)
-  {
-    showClass(classIndex=n);
-  }
+
+function currentClass(n)
+{
+  showClass(classIndex=n);
+}

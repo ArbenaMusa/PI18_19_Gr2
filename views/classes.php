@@ -33,10 +33,11 @@
         </div>
         <?php if($app->user->type() == 'teacher')
               {
+                echo "<script src='/static/js/invite.js'></script>";
                 echo "<a href=\"#popup2\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Add an announcement</a>";
                 echo "<a href=\"#popup1\" class=\"button1\" style=\"text-decoration:none; margin-right:40px;\">Change mentors</a>";
                 echo "<a href=\"#popup3\" class=\"button1\" style=\"text-decoration:none; margin-right:10px;\">Group Students</a>";
-                echo "<a href=\"#popup0\" class=\"button1\" style=\"text-decoration:none; margin-right:10px;\">Invite Students</a>";
+                echo "<a href=\"#popup0\" class=\"button1\" onclick=\"shareClass($classData->classId)\" style=\"text-decoration:none; margin-right:10px;\">Invite Students</a>";
               }
         ?></br></br>
         <div class="clearfix1">
@@ -86,19 +87,11 @@
 <div class="popup" id="popup0">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" method="post">
-        <label for="className">Class Name</label></br>
-        <input list="className" name="className" placeholder="Class Name.." value="">
-        <datalist id="className">
-          <!-- values from class database -->
-          <option value="class1">
-          <option value="class2">
-          <option value="class3">
-          <option value="class4">
-        </datalist>
+      <form action="/invite.php" method="post" enctype="multipart/form-data">
+        <label for="invite">Invite Link</label></br>
+        <input type="text" name="invite" id="inviteLink" value="">
         </br></br>
-        <label for="students">Students</label></br>
-        <input type="text" id="students" name="students" placeholder="Students.." value="" required>
+        <input type="file" name="file" accept=".csv">
         <input type="submit" value="Invite">
       </form>
     </div>

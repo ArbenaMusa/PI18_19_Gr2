@@ -38,4 +38,6 @@ if(!$app->db->execute($query2, $userId, $token->classId)) {
   ]);
 }
 
+return view('classes');
+
 ?>
