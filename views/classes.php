@@ -37,6 +37,7 @@
                 echo "<a href=\"#popup2\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Add an announcement</a>";
                 echo "<a href=\"#popup1\" class=\"button1\" style=\"text-decoration:none; margin-right:40px;\">Change mentors</a>";
                 echo "<a href=\"#popup3\" class=\"button1\" style=\"text-decoration:none; margin-right:10px;\">Group Students</a>";
+                echo "<a href=\"export.php?id=$classData->classId\" class=\"button1\" style=\"text-decoration:none; margin-right:10px;\">Export Students</a>";
                 echo "<a href=\"#popup0\" class=\"button1\" onclick=\"shareClass($classData->classId)\" style=\"text-decoration:none; margin-right:10px;\">Invite Students</a>";
               }
         ?></br></br>
