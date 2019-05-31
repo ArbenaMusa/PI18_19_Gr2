@@ -33,7 +33,20 @@
           <!--shfaqen lajmet -->
         </div>
       </div>
-      <div class="content"></div>
+      <div class="content">
+        <a href="#popup5" class="button1" style="float:left; text-decoration:none; margin-left:40px;">Ask</a><br /><br />
+        <div class="clearfix2">
+          <!--shfaqen pytjet-->
+          <div class="basiccontainer">
+            <div class="container_color">
+              <p class="identification">Emri dhe Mbiemri</p>
+              <img src="\static\img\avatar.png" width="56.25px" height="56.25px" alt="photo" align="right" />
+              <p class="questions">Pyetje  </p>
+              <span class="time" >11:00</span>
+              <p class="answers"> Pergjigjje dsdfdsfsdfd edhvedhvefhvewfvedvekdve ef ef rf  f rf rf fefsef sfrgfrwgwrf</p>
+            </div>
+          </div>
+      </div>
       <div class="content">
         <?php if($app->user->type() == 'teacher')
               {
@@ -154,6 +167,20 @@
         <label for="attachment">PDF Attachment</label></br>
         <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple></br>
         <input type="submit" value="Add resources">
+      </form>
+      <a href="" class="popup_close">X</a>
+    </div>
+  </div>
+</div>
+<div class="popup" id="popup5">
+  <div class="popup_inner">
+    <div class="popup_text">
+      <form action="#" method="post">
+        <label for="question_subject">Add a subject here...</label>
+        <input type="text" id="question_subject" name="question_subject" placeholder="Subject.." value="" required>
+        <label for="questsion_content">Type your question here...</label>
+        <textarea rows="4" cols="50" id="questsion_content" name="question_content" placeholder="Ask a question.." value=""></textarea><br />
+        <input type="submit" value="Ask">
       </form>
       <a href="" class="popup_close">X</a>
     </div>

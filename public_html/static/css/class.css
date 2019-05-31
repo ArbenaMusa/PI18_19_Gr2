@@ -238,7 +238,7 @@ input[list]
 .clearfix2
 {
   background-color: white;
-  max-height: 20vh;
+  max-height: 60vh;
   margin-left: 40px;
   margin-right: 40px;
   margin-top: 5px;
@@ -282,4 +282,87 @@ input[list]
 ::-webkit-file-upload-button:focus
 {
   outline: none;
+}
+/* cdfjbsdfbsdfbjsdbfjdsbfhsdbf */
+.container {
+  border: 0.3px solid #FF4B2B;
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  padding:20px;
+  /* margin: 20px 20px; */
+
+}
+/* .container:hover{
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  transition: width 4s;
+} */
+.container span{
+  font-size: 15px;
+  padding-bottom: 2px;
+}
+.questions{
+  font-weight: bold;
+  font-size: 15px;
+  margin:0;
+  padding-top: 0.5px;
+  color: #fff;
+}
+.answers{
+  padding-top: 0.5px;
+  color: #fff;
+  margin:0;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.identification{
+  margin:0;
+  font-size:15px;
+  color: #fff;
+}
+
+.container_color {
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  border-radius: 15px;
+  padding: 10px 10px;
+  margin: 3px 3px;
+  border: 1px 1px;
+}
+.container_color span{
+  font-size: 15px;
+}
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img.right {
+  float: right;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+.container_color img{
+  border-radius: 50%;
+}
+.time{
+  float: right;
+  color: #000;
+}
+.write{
+  padding:3px;
+}
+.chatbox {
+  width: 800px;
+  height: 800px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+.basiccontainer {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 3px;
+  margin: 10px 10px;
 }
