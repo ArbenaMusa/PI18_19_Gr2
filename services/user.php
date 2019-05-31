@@ -31,21 +31,35 @@ class SessionUser implements IUser {
     return isset($_SESSION['title']) ? $_SESSION['title'] : null;
   }
 
+  public function phone() {
+    return isset($_SESSION['phone']) ? $_SESSION['phone'] : null;
+  }
+
+  public function website() {
+    return isset($_SESSION['website']) ? $_SESSION['website'] : null;
+  }
+
   public function loggedIn() {
-    return isset($_SESSION['email']) && $_SESSION['email'];
+    return isset($_SESSION['id']) && $_SESSION['id'];
   }
 
   public function logIn($user) {
     $_SESSION['id'] = $user->id;
-    $_SESSION['email'] =$user->email;
     $_SESSION['name'] = $user->name;
+    $_SESSION['email'] =$user->email;
     $_SESSION['type'] = $user->type;
+    $_SESSION['title'] = $user->title;
+    $_SESSION['phone'] = $user->phone;
+    $_SESSION['website'] = $user->website;
   }
 
   public function logOut() {
     unset($_SESSION['id']);
-    unset($_SESSION['email']);
     unset($_SESSION['name']);
+    unset($_SESSION['email']);
     unset($_SESSION['type']);
+    unset($_SESSION['title']);
+    unset($_SESSION['phone']);
+    unset($_SESSION['website']);
   }
 }

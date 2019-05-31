@@ -62,6 +62,22 @@ class RequiredValidator implements IValidator {
   }
 }
 
+class OptionalValidator implements IValidator {
+  public $innerValidator;
+
+  public function __construct($innerValidator) {
+    $this->innerValidator = $innerValidator;
+  }
+
+  public function validate($value, $key, $data) {
+    if (!$value) {
+      return true;
+    } else {
+      return $this->innerValidator->validate($value, $key, $data);
+    }
+  }
+}
+
 class ValidatorPair {
   public function __construct(IValidator $validator, $error) {
     $this->validator = $validator;
@@ -73,6 +89,13 @@ class ValidatorPair {
 
   public function validate($value, $key, $data) {
     return $this->validator->validate($value, $key, $data);
+  }
+
+  public function optional() {
+    return new ValidatorPair(
+      new OptionalValidator($this->validator),
+      $this->error
+    );
   }
 }
 
@@ -114,11 +137,11 @@ class ValidatorFactory {
   }
 
   public function title($error = 'Invalid title') {
-    return new ValidatorPair(new RegexValidator('/^[A-Za-z\.]{0,4}$/'), $error);
+    return new ValidatorPair(new RegexValidator('/^([A-Za-z]+\.\s*){0,4}$/'), $error);
   }
 
   public function website($error = 'Invalid website') {
-    return new ValidatorPair(new RegexValidator("/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/"), $error);
+    return new ValidatorPair(new RegexValidator('/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&\'\(\)\*\+,;=.]+$/'), $error);
   }
 }
 

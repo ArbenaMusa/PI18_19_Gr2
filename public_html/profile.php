@@ -4,34 +4,56 @@ if (!$app->user->loggedIn()) {
   return redirect('/login.php');
 }
 
+$user = $app->users->find($app->user->email());
+
+if (!$user) {
+  return view('error');
+}
+
 if (!POST) {
-  return view('profile');
+  $success = !!fallback($_GET['success'], false);
+  return view('profile', [
+    'user' => $user,
+    'success' => $success
+  ]);
 }
 
 $model = $app->bind([
-  'name' => $match->regex('/^\s*([a-zA-Z]+)\s+([a-zA-Z]+)\s*$/', 'Fusha duhet te permbaj emrin dhe mbiemrin'),
-  'email' => $match->email(),
-  'title' => $match->title(),
-  'website' => $match->website(),
-  'phone' => $match->phone()
+  'name' => $match->regex('/^\s*([a-zA-Z]+)\s+([a-zA-Z]+)\s*$/', 'Name and Surname required'),
+  'title' => $match->title()->optional(),
+  'website' => $match->website()->optional(),
+  'phone' => $match->phone()->optional()
 ]);
 
 if (!$model->isValid()) {
+  logError('Invalid profile data: ' . implode($model->errors(), '; '));
   return view('profile', [
-    'model' => $model
+    'model' => $model,
+    'message' => 'Information you entered is not valid.',
+    'user' => $user
   ]);
 }
 
 $query = <<<SQL
-UPDATE users(name, email, title, website, phone)
-SET name = %s, email = %s, title = %s, website = %s, phone = %s
+UPDATE users
+SET name = %s, title = %s, website = %s, phone = %s
 WHERE id = %d
 SQL;
-if(!$db->execute($query, $model->name, $model->email, $model->title, $model->website, $model->phone, $app->user->id())) {
+
+$userId = $app->user->id();
+
+if(!$app->db->execute($query, $model->name, $model->title, $model->website, $model->phone, $userId)) {
   return view('profile', [
-    'error' => "There has been an error, please try again."
+    'message' => 'There has been an error, please try again.',
+    'user' => $user
   ]);
 }
 
-return redirect('/profile.php');
+$user = $app->users->find($app->user->email());
+$app->user->login($user);
+
+return redirect('/profile.php', [
+  'success' => 1
+]);
+
 ?>

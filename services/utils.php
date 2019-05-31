@@ -157,7 +157,7 @@ function writeLog($txt = "") {
 }
 
 function logError($msg = '') {
-  writeLog('[Error@' . $_SERVER['PHP_SELF'] . '] ' . get_caller_info() . ': ' . $msg);
+  writeLog(date('H:i:s') . ' [Error@' . $_SERVER['PHP_SELF'] . '] ' . get_caller_info() . ': ' . $msg);
 }
 
 ?>

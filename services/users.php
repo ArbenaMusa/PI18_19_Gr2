@@ -2,7 +2,8 @@
 
 interface IUsersManager {
   public function create($data);
-  public function check($username, $password);
+  public function check($email, $password);
+  public function find($email);
 }
 
 function appendToFile($path, $item) {
@@ -42,6 +43,12 @@ class JsonUsersManager implements IUsersManager {
     array_push($users, objectToArray($data));
     file_put_contents($path, json_encode($users));
     return false;
+  }
+
+  public function find($email) {
+    return find($users, function ($user) use ($email) {
+      return stringEquals($user->email, $email);
+    });
   }
 }
 
@@ -91,5 +98,9 @@ class SqlUsersManager implements IUsersManager {
     } else {
       return makeError('Email or password is wrong.');
     }
+  }
+
+  public function find($email) {
+    return $this->app->db->first('SELECT * FROM users WHERE email=%s', $email);
   }
 }

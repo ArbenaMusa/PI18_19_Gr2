@@ -1,6 +1,6 @@
 <?= view('layout/main_header', [
   'css' => '/static/css/profile.css',
-  'title' => $app->user->name() . "'s profile"
+  'title' => $user->name . "'s profile"
 ]) ?>
 
 <body>
@@ -8,15 +8,17 @@
   <article style="margin-top:30px;" class="paper">
 <header>
         <div class="header-content">
+        <div class="error"><?= fallback($message, null) ?></div>
+        <?php if (fallback($success, false)) { echo '<div class="success">Information updated successfully</div>'; } ?>
           <div class="header-pic" title="picture">
             <div class="pic"></div>
           </div>
           <div class="header-text">
             <table cellspacing ="10">
               <tr>
-                <td style="font-size:15px; font-style:italic;">Niveli i arsimimit</td>
-                <td style="font-weight:bold;"><?= $app->user->name() ?></td>
-            </tr>
+                <td style="font-size:15px; font-style:italic;"><?= fallback($user->title, "") ?></td>
+                <td style="font-weight:bold;"><?= $user->name ?></td>
+              </tr>
             </table>
           </div>
         </div>
@@ -24,33 +26,24 @@
 
         <button class="button-edit" onclick="editForm()">Edit Profile</button>
         <div class="edit-form" id="myForm">
-          <form class="form-container">
+          <form class="form-container" action="/profile.php" method="post" enctype="multipart/form-data">
             <h1>Edit Profile</h1>
             <br>
 
-            <label for="email"><b>Name</b></label><br>
-            <input type="text" placeholder="Enter First Name" name="firstname">
-            <input type="text" placeholder="Enter Last Name" name="lastname"><br>
+            <label for="name"><b>Name</b></label><br>
+            <input type="text" placeholder="Enter Name" name="name" value="<?= $user->name ?>"><br>
 
-            <label for="psw"><b>Password</b></label><br>
-            <input type="password" placeholder="Enter Password" name="psw">
-              <input type="password" placeholder="Confirm Password" ><br>
+            <label for="avatar"><b>Avatar</b></label><br>
+            <input type="file" name="avatar" accept="image/*"><br><br>
 
-            <label for="email"><b>Email Address</b></label><br>
-            <input type="text" placeholder="Enter Email Address" name="email">
-            <input type="text" placeholder="Enter Email Address" ><br>
+            <label for="title"><b>Title</b></label><br>
+            <input type="text" placeholder="Enter Title" name="title" value="<?= $user->title ?>"><br>
 
-            <label for="email"><b>Avatar</b></label><br>
-            <input type="file" name="avatar"><br><br>
+            <label for="phone"><b>Phone Number</b></label><br>
+            <input type="text" placeholder="Enter Phone Number" name="phone" value="<?= $user->phone ?>" ><br>
 
-            <label for="email"><b>Title</b></label><br>
-            <input type="text" placeholder="Enter Title" name="title"><br>
-
-            <label for="email"><b>Phone Number</b></label><br>
-            <input type="text" placeholder="Enter Phone Number" name="phone"><br>
-
-            <label for="email"><b>Website</b></label><br>
-            <input type="text" placeholder="Enter Website" name="website"><br>
+            <label for="website"><b>Website</b></label><br>
+            <input type="text" placeholder="Enter Website" name="website" value="<?= $user->website ?>" ><br>
 
             <button type="submit" class="btn save">Save Profile</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
@@ -76,15 +69,15 @@
             <div class="content-text">
               <ul>
                 <li>Website</li>
-                <li><?= $app->user->website() ?></li>
+                <a href="<?= $user->website ?>"><li><?= $user->website ?></li></a>
               </ul>
               <ul>
                 <li>Email</li>
-                <li><?= $app->user->email() ?></li>
+                <li><?= $user->email ?></li>
               </ul>
               <ul>
                 <li>Phone</li>
-                <li><?= $app->user->phone() ?></li>
+                <li><?= $user->phone ?></li>
               </ul>
             </div>
           </div>
