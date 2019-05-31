@@ -36,12 +36,14 @@ class SessionUser implements IUser {
   }
 
   public function logIn($user) {
+    $_SESSION['id'] = $user->id;
     $_SESSION['email'] =$user->email;
     $_SESSION['name'] = $user->name;
     $_SESSION['type'] = $user->type;
   }
 
   public function logOut() {
+    unset($_SESSION['id']);
     unset($_SESSION['email']);
     unset($_SESSION['name']);
     unset($_SESSION['type']);

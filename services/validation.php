@@ -82,7 +82,7 @@ class ValidatorFactory {
   }
 
   public function integer($error = 'Not a number') {
-    return new ValidatorPair(new RegexValidator('\d+'), $error);
+    return new ValidatorPair(new RegexValidator('/^\d+$/'), $error);
   }
 
   public function real($error = 'Not a number') {

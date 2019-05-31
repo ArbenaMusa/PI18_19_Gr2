@@ -13,6 +13,7 @@ include_once __DIR__ . '/services/user.php';
 include_once __DIR__ . '/services/users.php';
 include_once __DIR__ . '/services/validation.php';
 include_once __DIR__ . '/services/email.php';
+include_once __DIR__ . '/services/classes.php';
 
 class App {
   // Serviset
@@ -20,12 +21,14 @@ class App {
   public $users;
   public $db;
   public $email;
+  public $classes;
 
   public function __construct() {
     $this->db = new DbConnection($this);
     $this->user = new SessionUser($this);
     $this->users = new SqlUsersManager($this);
     $this->email = new EmailManager($this);
+    $this->classes = new SqlClassManager($this);
   }
 
   public function bind(array $requirements, $source = null) {
@@ -67,6 +70,16 @@ function view(string $name, array $data = []) {
   }
 
   include __DIR__ . '/views/' . $name . '.php';
+}
+
+function status($code) {
+  http_response_code($code);
+}
+
+function json($data = [], $code = 200) {
+  http_response_code($code);
+  header('Content-Type: application/json;charset=utf-8');
+  echo json_encode($data);
 }
 
 function redirect(string $url, $data = [], $statusCode = 303) {
