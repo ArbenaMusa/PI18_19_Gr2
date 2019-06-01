@@ -16,17 +16,17 @@
           <a href="/index.php"><h1>StuDB</h1>
           <img src="/static/img/StuDB.png" width="55" height="55"></a>
         </div>
-        <div id="menu">
-              <div class="dropdown">
-                <img src="/static/img/avatar.png" alt="Avatar" width="50" height="50" style="border: #FF4B2B solid 2px;">
-                <div class="dropdown-content">
-                  <img src="/static/img/avatar.png" alt="Avatar" width="200" height="200" style="border: #FF4B2B solid 2px;">
-                  <div class="personal"><?= $app->user->name() ?></div>
-                    <a href="/profile.php">Profile</a>
-                    <a href="/logout.php"><button class="button1">Sign out</button></a>
-                </div>
+          <div class="dropdown">
+            <img src="/static/img/avatar.png" alt="Avatar" width="50" height="50" style="border: #FF4B2B solid 2px;">
+            <div class="dropdown-content">
+              <div class="flex-container">
+                <img src="/static/img/avatar.png" alt="Avatar" width="200" height="200" style="border: #FF4B2B solid 2px;">
+                <div class="personal"><?= $app->user->name() ?></div>
+                  <a href="/profile.php"><button class="button1">Profile</button></a>
+                  <a href="/logout.php"><button class="button1">Sign out</button></a>
               </div>
-        </div>
+            </div>
+          </div>
       </div>
     </div>
   <!-- <View> -->

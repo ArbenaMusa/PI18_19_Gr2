@@ -18,7 +18,7 @@
 #logo
 {
 	position: absolute;
-	top: 6%;
+	top: 10%;
 	bottom: 6%;
 	left: 0;
 	width: 100%;
@@ -39,6 +39,7 @@
 }
 .dropdown
 {
+		top:13%;
     position: relative;
     display: block;
     float:right;
@@ -124,4 +125,17 @@
 {
 	text-decoration: none;
 	color:#383838;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.flex-container > a {
+	float:center;
+  width: 100px;
+  text-align: center;
 }
