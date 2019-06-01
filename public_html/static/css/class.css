@@ -431,3 +431,18 @@ padding:0;
   padding-right: 20px;
   padding-bottom: 10px;
 }
+.classinfo{
+  border: 5px solid #fff;
+  background-color: #f1f1f1;
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  border-radius: 20px;
+  margin: 0;
+  padding-left: 40px;
+  padding-right: 20px;
+  color: #fff;
+}
+.clearfix2 .pr{
+  margin: 0;
+  padding-left: 10px;
+}

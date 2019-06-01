@@ -94,18 +94,22 @@
               }
         ?></br></br>
         <div class="clearfix2">
-          <p><b>Lecture Material</b></p>
-          <!-- -->
-          </br>
-          <p><b>Exercises</b></p>
-          <!-- -->
-          </br>
-          <p><b>Web Resouces</b></p>
-          <!-- -->
-          </br>
-          <p><b>Homework</b></p>
-          <!-- -->
-          </br>
+          <p class="pr"><b>Lecture Material</b></p>
+          <div class="classinfo">
+             <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+          </div>
+          <p class="pr"><b>Exercises</b></p>
+          <div class="classinfo">
+            <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+          </div>
+          <p class="pr"><b>Web Resouces</b></p>
+          <div class="classinfo">
+              <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+          </div>
+          <p class="pr"><b>Homework</b></p>
+          <div class="classinfo">
+              <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+          </div>
         </div>
       </div>
       <!-- StudentData -->
