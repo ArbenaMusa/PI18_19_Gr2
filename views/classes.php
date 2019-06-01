@@ -144,8 +144,14 @@
         <input type="text" id="subject" name="subject" placeholder="Subject.." value="" required>
         <label for="contentA">Content</label>
         <textarea rows="4" cols="50" id="contentA" name="contentA" placeholder="Content.." value=""></textarea>
-        <label for="hashtags">Hashtags</label></br>
-        <input type="text" id="hashtags" name="hashtags" placeholder="Hashtags.." value="" required>
+        <input list="section" name="hashtag" placeholder="Hashtag.." value="">
+        <datalist id="section">
+          <option value="Lectures">
+          <option value="Lab">
+          <option value="Projects">
+          <option value="Results">
+        </datalist>
+        </br> </br>
         <label for="attachment">PDF Attachment</label></br>
         <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple></br>
         <label for="picture">Picture</label></br>
