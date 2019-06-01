@@ -14,7 +14,6 @@ class SqlClassManager implements IClassManager {
     $this->app = $app;
   }
 
-  //TODO create
   public function create($data) {
     $app = $this->app;
     $db = $app->db;
@@ -83,6 +82,36 @@ SQL;
 SQL;
 
     return $db->first($query, $classId);
+  }
+
+  public function makeAnnouncement($classId, $teacherId, $tag, $title, $content) {
+    $app = $this->app;
+    $db = $app->db;
+    $date = date('Y-m-d H:i:s');
+
+    $query = <<<SQL
+    INSERT INTO announcements(classId, teacherId, tag, title, content, time)
+    VALUES(%s, %s, %s, %s, %s, '$date')
+SQL;
+
+    if(!$db->execute($query, $classId, $teacherId, $tag, $title, $content)) {
+      return true;
+    }
+    return false;
+  }
+
+  public function getAnnouncements($classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    SELECT *
+    FROM announcements
+    WHERE classId = %s
+    ORDER BY time DESC
+SQL;
+
+    return $db->query($query, $classId);
   }
 }
 

@@ -1,7 +1,8 @@
 <?php view('layout/main_header', [
     'title' => 'StuDB',
     'css' => '/static/css/class.css',
-    'javascript' => '/static/js/class.js'
+    'javascript' => '/static/js/class.js',
+    'javascript2' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js'
 ]);?>
 <div style="padding-left:5%; padding-right:5%; padding-top:15px;">
   <?php
@@ -44,18 +45,25 @@
                 echo "<a href=\"export.php?id=$classData->classId\" class=\"button1\" style=\"text-decoration:none; margin-right:10px;\">Export Students</a>";
                 echo "<a href=\"#popup0\" class=\"button1\" onclick=\"shareClass($classData->classId)\" style=\"text-decoration:none; margin-right:10px;\">Invite Students</a>";
               }
-        ?></br></br>
-        <div class="clearfix1">
-          <a href="#popup8" style="text-decoration:none;">
-            <div class="basiccontainer">
-              <div class="container_color">
-                <p class="subject">Subject</p>
-                <span class="time" >11:00</span>
-                <p class="An_content"> Contenti sdfahsgdfjasgfdasf</p>
-              </div>
-            </div>
-          </a>
-        </div>
+        ?><br/><br/>
+      <?php
+        $announcements = $app->classes->getAnnouncements($classData->classId);
+        if($announcements) {
+          foreach($announcements as $a) {
+            echo '<div class="clearfix1">
+                    <a href="#popup8" style="text-decoration:none;">
+                      <div class="basiccontainer">
+                        <div class="container_color">
+                          <p class="subject">[' . $a->tag . '] ' . $a->title . '</p>
+                    <span class="time">' . $a->time . '</span>
+                    <p class="An_content">' . $a->content .'</p>
+                  </div>
+                </div>
+              </a>
+            </div>';
+          }
+        }
+      ?>
       </div>
       <!-- Q&A -->
       <div class="content" id="Q&A">
@@ -92,7 +100,7 @@
               {
                 echo "<a href=\"#popup4\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Add resources</a>";
               }
-        ?></br></br>
+        ?><br/><br/>
         <div class="clearfix2">
           <p class="pr"><b>Lecture Material</b></p>
           <div class="classinfo">
@@ -128,9 +136,9 @@
   <div class="popup_inner">
     <div class="popup_text">
       <form action="/invite.php" method="post" enctype="multipart/form-data">
-        <label for="invite">Invite Link</label></br>
+        <label for="invite">Invite Link</label><br/>
         <input type="text" name="invite" id="inviteLink" value="">
-        </br></br>
+        <br/><br/>
         <input type="file" name="file" accept=".csv">
         <input type="submit" value="Invite">
       </form>
@@ -143,11 +151,10 @@
   <div class="popup_inner">
     <div class="popup_text">
       <form action="#" method="post">
-        <label for="professor">Professor</label>
-        <input type="text" id="professor" name="professor" placeholder="Professor.." value="">
         <label for="assistant">Assistant Professor</label>
-        <input type="text" id="assistant" name="assistant" placeholder="Assistant Professor.." value="">
-        <input type="submit" value="Change">
+        <input type="text" id="assistant" name="assistant" placeholder="Search here">
+        <div id="display"></div>
+        <input type="submit" value="Add">
       </form>
     </div>
     <a href="#ClassInfo" class="popup_close">X</a>
@@ -157,24 +164,25 @@
 <div class="popup" id="popup2">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" method="post">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" placeholder="Subject.." value="" required>
-        <label for="contentA">Content</label>
-        <textarea rows="4" cols="50" id="contentA" name="contentA" placeholder="Content.." value=""></textarea>
-        <input list="section" name="hashtag" placeholder="Hashtag.." value="">
+      <form action="/make_announcement.php" method="post">
+        <label for="title">Subject</label>
+        <input type="text" id="title" name="title" placeholder="Subject" required>
+        <label for="content">Content</label>
+        <textarea rows="4" cols="50" id="content" name="content" placeholder="Content" ></textarea>
+        <input list="section" name="tag" placeholder="Tag">
         <datalist id="section">
           <option value="Lectures">
           <option value="Lab">
           <option value="Projects">
           <option value="Results">
         </datalist>
-        </br> </br>
-        <label for="attachment">PDF Attachment</label></br>
-        <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple></br>
-        <label for="picture">Picture</label></br>
+        <br/> <br/>
+        <label for="attachment">PDF Attachment</label><br/>
+        <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple><br/>
+        <label for="picture">Picture</label><br/>
         <input type="file" id="picture" name="picture" accept="image/*" value="" multiple>
-        </br>
+        <br/>
+        <input name="classId" type="hidden" value="<?= $classData->classId ?>" />
         <input type="submit" value="Publish">
       </form>
       <a href="#ClassInfo" class="popup_close">X</a>
@@ -206,9 +214,9 @@
           <option value="web resources">
           <option value="homework">
         </datalist>
-        </br> </br>
-        <label for="attachment">PDF Attachment</label></br>
-        <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple></br>
+        <br/> <br/>
+        <label for="attachment">PDF Attachment</label><br/>
+        <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple><br/>
         <input type="submit" value="Add resources">
       </form>
       <a href="#Resouces" class="popup_close">X</a>
@@ -291,4 +299,4 @@
       <a href="#StudentData" class="popup_close">X</a>
     </div>
   </div>
-</div
+</div>

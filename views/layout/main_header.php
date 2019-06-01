@@ -7,6 +7,8 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     <link rel="stylesheet" href="<?= $css ?>"/>
     <script type="text/javascript" src="<?= $javascript?>"></script>
+    <script type="text/javascript" src="<?= $javascript2?>"></script>
+    <script type="text/javascript" src="<?= $javascript3?>"></script>
     <link rel="stylesheet" href="/static/css/main_header_footer.css"/>
   </head>
   <body>
