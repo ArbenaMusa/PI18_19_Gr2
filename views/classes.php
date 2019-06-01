@@ -59,8 +59,17 @@
       </div>
       <!-- Q&A -->
       <div class="content" id="Q&A">
-        <a href="#popup5" class="button1" style="float:left; text-decoration:none; margin-left:40px;">Ask</a><br /><br />
+        <?php if($app->user->type() == 'student')
+        {
+          echo "<a href=\"#popup5\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Ask</a><br /><br />";
+        }
+        ?>
         <div class="clearfix2">
+        <?php if($app->user->type() == 'teacher')
+        {
+          echo "<a href=\"#popup9\" style=\"text-decoration:none;\">";
+        }
+        ?>
           <div class="basiccontainer">
             <div class="container_color">
               <p class="identification">Emri dhe Mbiemri</p>
@@ -70,6 +79,11 @@
               <p class="answers"> Pergjigjje dsdfdsfsdfd edhvedhvefhvewfvedvekdve ef ef rf  f rf rf fefsef sfrgfrwgwrf</p>
             </div>
           </div>
+          <?php if($app->user->type() == 'teacher')
+          {
+            echo "</a>";
+          }
+          ?>
         </div>
       </div>
       <!-- Resources -->
@@ -262,3 +276,15 @@
     </div>
   </div>
 </div>
+<div class="popup" id="popup9">
+  <div class="popup_inner">
+    <div class="popup_text">
+      <form action="#" method="post">
+        <label for="Answer">Answer</label>
+        <input type="text" id="answer" name="answer" placeholder="Answer.." value="">
+        <input type="submit" value="Answer">
+      </form>
+      <a href="#StudentData" class="popup_close">X</a>
+    </div>
+  </div>
+</div
