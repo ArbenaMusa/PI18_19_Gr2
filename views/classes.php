@@ -49,9 +49,9 @@
       <?php
         $announcements = $app->classes->getAnnouncements($classData->classId);
         if($announcements) {
+          echo '<div class="clearfix1">';
           foreach($announcements as $a) {
-            echo '<div class="clearfix1">
-                    <a href="#popup8" style="text-decoration:none;">
+            echo '<a href="#popup8" style="text-decoration:none;">
                       <div class="basiccontainer">
                         <div class="container_color">
                           <p class="subject">[' . $a->tag . '] ' . $a->title . '</p>
@@ -59,9 +59,9 @@
                     <p class="An_content">' . $a->content .'</p>
                   </div>
                 </div>
-              </a>
-            </div>';
+              </a>';
           }
+          echo '</div>';
         }
       ?>
       </div>
