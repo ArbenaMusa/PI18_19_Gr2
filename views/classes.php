@@ -18,7 +18,11 @@
           <li><a class="classA active" onclick="currentClass(1)">ClassInfo</a></li>
           <li><a class="classA" onclick="currentClass(2)">Q&A</a></li>
           <li><a class="classA" onclick="currentClass(3)">Resources</a></li>
-          <li><a class="classA" onclick="currentClass(4)">StudentData</a></li>
+          <?php if($app->user->type() == 'teacher')
+          {
+            echo "<li><a class=\"classA\" onclick=\"currentClass(4)\">StudentData</a></li>";
+          }
+          ?>
         </ul>
       </div>
       <!-- Class Info -->
@@ -91,15 +95,14 @@
         </div>
       </div>
       <!-- StudentData -->
-      <div class="content" id="StudentData">
-        <?php if($app->user->type() == 'teacher')
-              {
-                echo "<a href=\"#popup6\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Attendance</a>";
-                echo "<a href=\"#popup7\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Project Evaluation</a>";
-                echo "<button class=\"button1\">Export Data</button>";
-              }
-        ?>
-      </div>
+      <?php if($app->user->type() == 'teacher')
+      {
+        echo "<div class=\"content\" id=\"StudentData\">";
+        echo "<a href=\"#popup6\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Attendance</a>";
+        echo "<a href=\"#popup7\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Project Evaluation</a>";
+        echo "<button class=\"button1\">Export Data</button>";
+        echo "</div>";
+      }?>
     </div>
 </div>
 <!-- Invite Students -->

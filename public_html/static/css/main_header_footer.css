@@ -37,55 +37,6 @@
 	text-decoration: none;
 	color: #2C383B;
 }
-#menu
-{
-	position: absolute;
-	right: 0;
-	top: 10%;
-	bottom:0;
-}
-#menu ul
-{
-	display: inline-block;
-}
-#menu li
-{
-	display: block;
-	float: left;
-	text-align: center;
-    line-height: 60px;
-}
-#menu li a
-{
-	display: inline-block;
-	margin-left: 1px;
-	padding: 0 1.5em;
-	letter-spacing: 0.10em;
-	text-decoration: none;
-	font-size: 1em;
-	text-transform: uppercase;
-	outline: 0;
-	color: #212121;
-    background: #ECECEC;
-	border-radius:20%;
-}
-#menu li a:active
-{
-    background-color:rgb(226, 192, 192);
-}
-#menu li a:hover
-{
-	background-color:rgb(236, 116, 144);
-	transition-duration: 1s;
-	border-radius:50%;
-}
-#menu .current_page_item a
-{
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
-    color: #FFF;
-    border-radius:50%;
-}
 .dropdown
 {
     position: relative;

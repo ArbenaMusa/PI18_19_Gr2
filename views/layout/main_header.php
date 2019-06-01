@@ -17,12 +17,6 @@
           <img src="/static/img/StuDB.png" width="55" height="55"></a>
         </div>
         <div id="menu">
-          <ul>
-            <li class="current_page_item"><a href="index.php" title="">Menu 1</a></li>
-            <li><a href="#" title="">Menu 2</a></li>
-            <li><a href="#" title="">Menu 3</a></li>
-            <li><a href="#" title="">Menu 4</a></li>
-            <li>
               <div class="dropdown">
                 <img src="/static/img/avatar.png" alt="Avatar" width="50" height="50" style="border: #FF4B2B solid 2px;">
                 <div class="dropdown-content">
@@ -32,8 +26,6 @@
                     <a href="/logout.php"><button class="button1">Sign out</button></a>
                 </div>
               </div>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
