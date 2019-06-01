@@ -336,7 +336,6 @@ input[list]
   clear: both;
   display: table;
 }
-
 .containerA img.right {
   float: right;
   padding-right: 20px;
@@ -417,4 +416,18 @@ padding:0;
   color:#383838;
   font-family: 'Source Sans Pro', sans-serif;
   font-size:20px;
+}
+.subject{
+  font-weight: bold;
+  font-size: 15px;
+  margin:0;
+  padding-top: 0.5px;
+  color: #fff;
+}
+.An_content{
+  padding-top: 0.5px;
+  color: #fff;
+  margin:0;
+  padding-right: 20px;
+  padding-bottom: 10px;
 }

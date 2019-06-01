@@ -42,14 +42,21 @@
               }
         ?></br></br>
         <div class="clearfix1">
-          <!--shfaqen lajmet -->
+          <a href="#popup8" style="text-decoration:none;">
+            <div class="basiccontainer">
+              <div class="container_color">
+                <p class="subject">Subject</p>
+                <span class="time" >11:00</span>
+                <p class="An_content"> Contenti sdfahsgdfjasgfdasf</p>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
       <!-- Q&A -->
       <div class="content" id="Q&A">
         <a href="#popup5" class="button1" style="float:left; text-decoration:none; margin-left:40px;">Ask</a><br /><br />
         <div class="clearfix2">
-          <!--shfaqen pytjet-->
           <div class="basiccontainer">
             <div class="container_color">
               <p class="identification">Emri dhe Mbiemri</p>
@@ -69,7 +76,18 @@
               }
         ?></br></br>
         <div class="clearfix2">
-          <!--shfaqen resurset -->
+          <p><b>Lecture Material</b></p>
+          <!-- -->
+          </br>
+          <p><b>Exercises</b></p>
+          <!-- -->
+          </br>
+          <p><b>Web Resouces</b></p>
+          <!-- -->
+          </br>
+          <p><b>Homework</b></p>
+          <!-- -->
+          </br>
         </div>
       </div>
       <!-- StudentData -->
@@ -220,6 +238,17 @@
     <div class="popup_text">
       <form action="" method="post">
       </form>
+      <a href="#StudentData" class="popup_close">X</a>
+    </div>
+  </div>
+</div>
+<div class="popup" id="popup8">
+  <div class="popup_inner">
+    <div class="popup_text">
+      <p class="subject">Subject</p>
+      <span class="time" >11:00</span>
+      <p class="An_content"> Contenti sdfahsgdfjasgfdasf</p>
+      <!-- image and Attachment-->
       <a href="#StudentData" class="popup_close">X</a>
     </div>
   </div>
