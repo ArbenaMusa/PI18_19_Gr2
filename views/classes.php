@@ -116,19 +116,43 @@
         <div class="clearfix2">
           <p class="pr"><b>Lecture Material</b></p>
           <div class="classinfo">
-             <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+            <?php
+              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Lectures"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              }
+            ?>
           </div>
-          <p class="pr"><b>Exercises</b></p>
+          <p class="pr"><b>Lab</b></p>
           <div class="classinfo">
-            <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+            <?php
+              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Lab"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              }
+            ?>
           </div>
-          <p class="pr"><b>Web Resouces</b></p>
+          <p class="pr"><b>Projects</b></p>
           <div class="classinfo">
-              <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+            <?php
+              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Projects"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              }
+            ?>
+          </div>
+          <p class="pr"><b>Results</b></p>
+          <div class="classinfo">
+            <?php
+              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Results"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              }
+            ?>
           </div>
           <p class="pr"><b>Homework</b></p>
           <div class="classinfo">
-              <p>djfbsefhbeafbhjbfsdvfjsvflasfvlsajfvalsjfvsaljfhvalsjefvasljefaseljfsaeljfseav</p>
+            <?php
+              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Homework"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              }
+            ?>
           </div>
         </div>
       </div>
@@ -223,12 +247,13 @@
     <div class="popup_text">
       <form action="/resources.php" method="post" enctype="multipart/form-data">
         <label for="section">Section</label>
-        <input list="section" name="section" placeholder="Section">
-        <datalist id="section">
-          <option value="lecture material">
-          <option value="material of exercises">
-          <option value="web resources">
-          <option value="homework">
+        <input list="section2" name="section" placeholder="Section">
+        <datalist id="section2">
+          <option value="Lecture material">
+          <option value="Lab">
+          <option value="Project">
+          <option value="Results">
+          <option value="Homework">
         </datalist>
         <br/> <br/>
         <label for="attachment">Attachment</label><br/>
