@@ -3,7 +3,7 @@
     'css' => '/static/css/class.css',
     'javascript' => '/static/js/class.js',
     'javascript2' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js',
-    'javascript3' => '/static/js/announcement.js'
+    'javascript3' => '/static/js/popup.js'
 ]);?>
 <div class='error'><?= fallback($message, null) ?></div>
 <div style="padding-left:5%; padding-right:5%; padding-top:15px;">
