@@ -13,66 +13,10 @@
     </div>
 </div>
 <div id="wrapper">
-    <div id="featured-wrapper">
-        <div id="featured" class="container">
-            <div class="column1"> <span class="icon"></span>
-                <div class="title">
-                    <a href="classes.php"><h2>Funksioni 1</h2></a>
-                </div>
-                <p>Nifar pershkrimi i ktij funksioni.</p>
-            </div>
-            <div class="column2"> <span class="icon"></span>
-                <div class="title">
-                    <a href="#"><h2>Funksioni 2</h2></a>
-                </div>
-                <p>Nifar pershkrimi i ktij funksioni.</p>
-            </div>
-            <div class="column3"> <span class="icon"></span>
-                <div class="title">
-                    <a href="#"><h2>Funksioni 3</h2></a>
-                </div>
-                <p>Nifar pershkrimi i ktij funksioni.</p>
-            </div>
-            <div class="column4"> <span class="icon"></span>
-                <div class="title">
-                    <a href="#"><h2>Funksioni 4</h2></a>
-                </div>
-                <p>Nifar pershkrimi i ktij funksioni.</p>
-            </div>
-        </div>
-    </div>
     <div id="extra" class="container">
         <h2>Nifar lloj gjeje tjeter ktu.</h2>
         <span>Nifar lloj pershkrimi i ksaj gjese tjeter ktu.</span>
-        <a href="#" class="button">nifar butoni</a>
-    </div>
-</div>
-<div id="footer-wrapper">
-    <div id="footer" class="container">
-        <div class="column1">
-            <div class="title">
-                <a href="#"><h2>Pershkrimi 1</h2></a>
-            </div>
-            <p>Bllahh bllahh bllahh</p>
-        </div>
-        <div class="column2">
-            <div class="title">
-                <a href="#"><h2>Pershkrimi 2</h2></a>
-            </div>
-            <p>Bllahh bllahh bllahh</p>
-        </div>
-        <div class="column3">
-            <div class="title">
-                <a href="#"><h2>Pershkrimi 3</h2></a>
-            </div>
-            <p>Bllahh bllahh bllahh</p>
-        </div>
-        <div class="column4">
-            <div class="title">
-                <a href="#"><h2>Pershkrimi 4</h2></a>
-            </div>
-            <p>Bllahh bllahh bllahh</p>
-        </div>
+        <a href="classes.php" class="button">nifar butoni</a>
     </div>
 </div>
 <?php view('layout/main_footer')?>
