@@ -319,8 +319,32 @@
 <!-- Project Evaluation -->
 <div class="popup" id="popup7">
   <div class="popup_inner">
-    <div class="popup_text">
+    <div class="popup_text" >
       <form action="" method="post">
+          <table>
+            <thead>
+              <tr>
+                <td>StudentId</td>
+                <td>Name</td>
+                <td>Project Evaluation</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td>
+                  <div class="attendance"><input type="text" placeholder="Student ID" name="studentid"></div>
+              </td>
+              <td>
+                 <div class="attendance"><input type="text" placeholder="Student Name" name="studentname"></div>
+              <td> 
+                 <div class="attendance"><input type="number" placeholder="Project Evaluation" min="0" max="100" name="projectEvaluation"></div>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <input type="submit" value="Add Data">
+       </form>
       </form>
       <a href="#StudentData" class="popup_close">X</a>
     </div>
