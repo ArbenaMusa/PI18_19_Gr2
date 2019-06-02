@@ -467,7 +467,7 @@ padding:0;
   display: table-row;
   width: 100%;
 }
-.attendance input[type=text]{
+.attendance input[type=text],input[type=number] {
   margin: 5px 0 0 0;
   padding: 12px;
   border: 1px solid #ccc;
