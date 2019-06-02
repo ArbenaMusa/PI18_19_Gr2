@@ -32,6 +32,8 @@ if(!$app->classes->addResource($model->classId, $teacherId, $filename, $friendly
   ]);
 }
 
-return redirect('/classes.php');
+return redirect('/classes.php', [
+  'id' => $model->classId
+]);
 
 ?>

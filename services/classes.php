@@ -111,6 +111,49 @@ SQL;
     return $db->query($query, $classId);
   }
 
+//---------------------------------Q&A-------------------------------------
+  public function makeQuestion($classId, $studentId, $title, $content) {
+    $app = $this->app;
+    $db = $app->db;
+    $date = date('Y-m-d H:i:s');
+
+    $query = <<<SQL
+    INSERT INTO questions(classId, studentId, title, content, time)
+    VALUES(%s, %s, %s, %s, "$date")
+SQL;
+
+    $db->execute($query, $classId, $studentId, $title, $content);
+  }
+
+  public function getQuestions($classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    SELECT *
+    FROM questions
+    INNER JOIN users ON questions.studentId = users.Id
+    WHERE classId = %s
+    ORDER BY time DESC
+SQL;
+
+    return $db->query($query, $classId);
+  }
+
+  //--------------------Answers-----------------------------
+  public function answer($questionId, $authorId, $comment, $classId) {
+    $app = $this->app;
+    $db = $app->db;
+    $date = date('Y-m-d H:i:s');
+
+    $query = <<<SQL
+    INSERT INTO questions(questionId, authorId, comment, classId, time)
+    VALUES(%s, %s, %s, %s, "$date")
+SQL;
+
+    return $db->execute($query, $questionId, $authorId, $comment, $classId);
+  }
+
   public function addResource($classId, $teacherId, $filepath, $name, $section) {
     $app = $this->app;
     $db = $app->db;
@@ -122,6 +165,23 @@ SQL;
 
     return $app->db->execute($query, $classId, $teacherId, $name, $section);
   }
+
+  /*
+  public function getAnswers($classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    SELECT *
+    FROM answers
+    INNER JOIN users ON questions.studentId = users.Id
+    WHERE classId = %s
+    ORDER BY time DESC
+SQL;
+
+    return $db->query($query, $classId);
+  }
+  */
 }
 
 ?>
