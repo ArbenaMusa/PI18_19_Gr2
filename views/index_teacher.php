@@ -16,6 +16,7 @@
     <div id="extra" class="container">
         <h2>We provide you the best online education system.</h2>
         <span>Better connections for better education.</span>
+        <br>
         <a href="classes.php" class="button">Go to Classes</a>
     </div>
 </div>
