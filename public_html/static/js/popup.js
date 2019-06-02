@@ -9,3 +9,9 @@ function getAnnouncementContent(title, tag, time, content, filepath) {
   $('#popup8section p').html(content);
   $('#popup8section a').attr("href", "/download_attachment.php?file=" + filepath + "&type=announcement");
 }
+function getQuestionsContent(name, title, time, content) {
+  $('#popup9section h3').html(name);
+  $('#popup9section h1').html(title);
+  $('#popup9section span').html(time);
+  $('#popup9section p').html(content);
+}

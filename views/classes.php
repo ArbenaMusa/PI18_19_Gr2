@@ -90,7 +90,7 @@
             echo '<div class="clearfix2">';
             foreach($questions as $q)
             {
-                echo "<a href=\"#popup9\" style=\"text-decoration:none;\">";
+                echo '<a href="#popup9" onclick="getQuestionsContent(\'' . $q->name . '\', \'' . $q->title . '\', \'' . $q->time . '\', \'' . $q->content . '\')" style=\"text-decoration:none;\">';
                 echo "
                     <div class=\"basiccontainer\">
                       <div class=\"container_color\">
@@ -374,12 +374,12 @@
 <div class="popup" id="popup9">
   <div class="popup_inner">
     <div class="popup_text">
-      <?php
-      echo "<p>". $q->name . "</p>
-            <p>". $q->title . "</p>
-            <span>" . $q->time . "</span>
-            <p>". $q->content ."</p>";
-      ?>
+      <div id="popup9section">
+            <h3></h3>
+            <h1></h1>
+            <span></span>
+            <p></p>
+      </div>
       <?php
           $answers = $app->classes->getAnswers($classData->classId);
           if($answers) {
