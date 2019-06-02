@@ -294,12 +294,21 @@
             </thead>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+              <td>
+                  <div class="attendance"><input type="text" placeholder="Student ID" name="studentid"></div>
+              </td>
+              <td>
+                 <div class="attendance"><input type="text" placeholder="Student Name" name="studentname"></div>
+              <td> 
+                 <div class="attendance">
+                   <label class="att-label" for="Java 1">Java 1</label>
+                   <input type="checkbox" id="chk" />         
+                 </div>
+              </td>
               </tr>
             </tbody>
           </table>
+          <br>
           <input type="submit" value="Add Data">
        </form>
       </div>
