@@ -5,8 +5,8 @@ if (!POST) {
 }
 
 $model = $app->bind([
-  'title' => $match->required(),
-  'content' => $match->required(),
+  'questionId' => $match->required(),
+  'comment' => $match->required(),
   'classId' => $match->required()
 ]);
 

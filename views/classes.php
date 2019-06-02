@@ -299,10 +299,10 @@
               </td>
               <td>
                  <div class="attendance"><input type="text" placeholder="Student Name" name="studentname"></div>
-              <td> 
+              <td>
                  <div class="attendance">
                    <label class="att-label" for="Java 1">Java 1</label>
-                   <input type="checkbox" id="chk" />         
+                   <input type="checkbox" id="chk" />
                  </div>
               </td>
               </tr>
@@ -347,15 +347,15 @@
             <p>". $q->content ."</p>";
       ?>
       <?php
-          $answers = $app->classes->getAnswerss($classData->classId);
+          $answers = $app->classes->getAnswers($classData->classId);
           if($answers) {
             echo '<div class="clearfix1">';
             foreach($answers as $an) {
               echo '<div class="basiccontainer">
                       <div class="container_color">
-                        <p class="subject">[' . $an->tag . '] ' . $an->title . '</p>
+                        <p>'. $q->name . '</p>
                         <span class="time">' . $an->time . '</span>
-                        <p class="An_content">' . $an->content .'</p>
+                        <p class="An_content">' . $an->comment .'</p>
                      </div>
                    </div>';
             }
@@ -366,11 +366,10 @@
       if($app->user->type() == 'teacher')
       {
       echo '
-            <form action="#" method="post">
+            <form action="answer.php" method="post">
               <label for="Answer">Answer</label>
               <input type="text" id="answer" name="answer" placeholder="Answer.." value="">
               <input type="submit" value="Answer">
-              <input name="authorId" type="hidden" value="<?= $classData->authorId ?>" />
               <input name="questionId" type="hidden" value="<?= $classData->questionId ?>" />
               <input name="classId" type="hidden" value="<?= $classData->classId ?>" />
             </form>';

@@ -188,7 +188,7 @@ SQL;
     $date = date('Y-m-d H:i:s');
 
     $query = <<<SQL
-    INSERT INTO questions(questionId, authorId, comment, classId, time)
+    INSERT INTO answers(questionId, authorId, comment, classId, time)
     VALUES(%s, %s, %s, %s, "$date")
 SQL;
 
@@ -207,7 +207,7 @@ SQL;
     return $app->db->execute($query, $classId, $teacherId, $name, $section);
   }
 
-  /*
+
   public function getAnswers($classId) {
     $app = $this->app;
     $db = $app->db;
@@ -215,14 +215,13 @@ SQL;
     $query = <<<SQL
     SELECT *
     FROM answers
-    INNER JOIN users ON questions.studentId = users.Id
+    INNER JOIN questions ON answers.questionId = questions.Id
     WHERE classId = %s
     ORDER BY time DESC
 SQL;
 
     return $db->query($query, $classId);
   }
-  */
 }
 
 ?>
