@@ -208,7 +208,7 @@ SQL;
   }
 
 
-  public function getAnswers($classId) {
+  public function getAnswers($classId, $questionId) {
     $app = $this->app;
     $db = $app->db;
 
