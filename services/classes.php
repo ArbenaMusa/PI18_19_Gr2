@@ -13,7 +13,6 @@ interface IClassManager {
   public function makeQuestion($classId, $studentId, $title, $content);
   public function getQuestions($classId);
   public function answer($questionId, $authorId, $comment, $classId);
-  public function getAnswers($classId, $questionId);
   public function addResource($classId, $teacherId, $filepath, $name, $section);
 }
 
@@ -162,7 +161,6 @@ SQL;
     return $db->query($query, $classId);
   }
 
-//---------------------------------Q&A-------------------------------------
   public function makeQuestion($classId, $studentId, $title, $content) {
     $app = $this->app;
     $db = $app->db;
@@ -191,7 +189,6 @@ SQL;
     return $db->query($query, $classId);
   }
 
-  //--------------------Answers-----------------------------
   public function answer($questionId, $authorId, $comment, $classId) {
     $app = $this->app;
     $db = $app->db;
@@ -217,21 +214,6 @@ SQL;
     return $app->db->execute($query, $classId, $teacherId, $name, $section);
   }
 
-
-  public function getAnswers($classId, $questionId) {
-    $app = $this->app;
-    $db = $app->db;
-
-    $query = <<<SQL
-    SELECT *
-    FROM answers
-    INNER JOIN questions ON answers.questionId = questions.Id
-    WHERE questions.classId = %s
-    ORDER BY time DESC
-SQL;
-
-    return $db->query($query, $classId);
-  }
 }
 
 ?>

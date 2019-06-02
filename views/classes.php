@@ -381,22 +381,6 @@
             <p></p>
       </div>
       <?php
-          $answers = $app->classes->getAnswers($classData->classId);
-          if($answers) {
-            echo '<div class="clearfix1">';
-            foreach($answers as $an) {
-              echo '<div class="basiccontainer">
-                      <div class="container_color">
-                        <p>'. $q->name . '</p>
-                        <span class="time">' . $an->time . '</span>
-                        <p class="An_content">' . $an->comment .'</p>
-                     </div>
-                   </div>';
-            }
-            echo '</div>';
-          }
-      ?>
-      <?php
       if($app->user->type() == 'teacher')
       {
       echo '

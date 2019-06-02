@@ -33,7 +33,7 @@ header {
 }
 header p {
   text-align:center;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family:Arial, Helvetica, sans-serif;;
   margin:0;
   color: #212121;
 }
@@ -67,8 +67,7 @@ header p {
     display:table-cell;
 }
 .content-cat {
-  font-family:'Source Sans Pro', sans-serif;
-  font-variant:small-caps;
+  font-family:Arial, Helvetica, sans-serif;;
   font-weight:300;
   letter-spacing: 1px;
   color: #212121;
@@ -104,7 +103,7 @@ header p {
   margin-bottom:24px;
 }
 .content-text ul li {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family:Arial, Helvetica, sans-serif;;
   font-size:11px;
   display:inline-block;
 }
@@ -122,7 +121,7 @@ header p {
   color:#4fc3f7;
 }
 .work-listing p {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;;
   font-size:0.7em;
   font-weight:400;
   line-height:1.5px;
