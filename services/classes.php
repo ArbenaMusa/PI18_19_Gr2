@@ -138,6 +138,20 @@ SQL;
     return $db->query($query, $classId);
   }
 
+  public function getStudents($classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    SELECT u.name, e.group
+    FROM enrolled e
+    INNER JOIN users u ON u.id = e.studentId
+    WHERE e.classId = %s
+SQL;
+
+    return $db->query($query, $classId);
+  }
+
 //---------------------------------Q&A-------------------------------------
   public function makeQuestion($classId, $studentId, $title, $content) {
     $app = $this->app;

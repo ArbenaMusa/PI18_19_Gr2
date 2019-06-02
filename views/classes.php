@@ -205,10 +205,14 @@
 <div class="popup" id="popup3">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" mathod="post">
-
-        <input type="submit" value="Group">
-      </form>
+    <?php
+      $students = $app->classes->getStudents($classData->classId);
+      echo "<form action='group_students.php' method='post'><table>";
+      foreach ($students as $s) {
+        echo "<tr><td>" . $s->name . "</td><td><input type='text' name='group' value='" . $s->group . "'/></td></tr>";
+      }
+        echo "</table><input type='submit' value='Submit'></form>";
+    ?>
     </div>
     <a href="#ClassInfo" class="popup_close">X</a>
   </div>

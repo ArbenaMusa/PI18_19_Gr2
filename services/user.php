@@ -27,18 +27,6 @@ class SessionUser implements IUser {
     return isset($_SESSION['type']) ? $_SESSION['type'] : null;
   }
 
-  public function title() {
-    return isset($_SESSION['title']) ? $_SESSION['title'] : null;
-  }
-
-  public function phone() {
-    return isset($_SESSION['phone']) ? $_SESSION['phone'] : null;
-  }
-
-  public function website() {
-    return isset($_SESSION['website']) ? $_SESSION['website'] : null;
-  }
-
   public function loggedIn() {
     return isset($_SESSION['id']) && $_SESSION['id'];
   }
@@ -48,9 +36,6 @@ class SessionUser implements IUser {
     $_SESSION['name'] = $user->name;
     $_SESSION['email'] =$user->email;
     $_SESSION['type'] = $user->type;
-    $_SESSION['title'] = $user->title;
-    $_SESSION['phone'] = $user->phone;
-    $_SESSION['website'] = $user->website;
   }
 
   public function logOut() {
@@ -58,8 +43,5 @@ class SessionUser implements IUser {
     unset($_SESSION['name']);
     unset($_SESSION['email']);
     unset($_SESSION['type']);
-    unset($_SESSION['title']);
-    unset($_SESSION['phone']);
-    unset($_SESSION['website']);
   }
 }
