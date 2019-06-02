@@ -114,7 +114,7 @@ SQL;
     $db = $app->db;
 
     $query = <<<SQL
-    SELECT a.tag, a.title, a.content, u.name, a.time
+    SELECT a.id, a.tag, a.title, a.content, u.name, a.time, a.filepath
     FROM announcements a
     INNER JOIN users u ON u.id = a.teacherId
     WHERE classId = %s
@@ -216,7 +216,7 @@ SQL;
     SELECT *
     FROM answers
     INNER JOIN questions ON answers.questionId = questions.Id
-    WHERE classId = %s
+    WHERE questions.classId = %s
     ORDER BY time DESC
 SQL;
 

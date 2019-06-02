@@ -2,7 +2,8 @@
     'title' => 'StuDB',
     'css' => '/static/css/class.css',
     'javascript' => '/static/js/class.js',
-    'javascript2' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js'
+    'javascript2' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js',
+    'javascript3' => '/static/js/announcement.js'
 ]);?>
 <div class='error'><?= fallback($message, null) ?></div>
 <div style="padding-left:5%; padding-right:5%; padding-top:15px;">
@@ -61,7 +62,7 @@
         if($announcements) {
           echo '<div class="clearfix1">';
           foreach($announcements as $a) {
-            echo '<a href="#popup8" style="text-decoration:none;">
+            echo '<a href="#popup8" onclick="getAnnouncementContent(\'' . $a->title . '\', \'' . $a->tag . '\', \'' . $a->time . '\', \'' . $a->content . '\', \'' . $a->filepath . '\')" style="text-decoration:none;">
                       <div class="basiccontainer">
                         <div class="container_color">
                           <p class="subject">[' . $a->tag . '] ' . $a->title . '-' . $a->name . '</p>
@@ -117,40 +118,40 @@
           <p class="pr"><b>Lecture Material</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Lectures"') as $row) {
-                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Lectures"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
           </div>
           <p class="pr"><b>Lab</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Lab"') as $row) {
-                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Lab"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
           </div>
           <p class="pr"><b>Projects</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Projects"') as $row) {
-                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Projects"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
           </div>
           <p class="pr"><b>Results</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Results"') as $row) {
-                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Results"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
           </div>
           <p class="pr"><b>Homework</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT name, filepath FROM resources WHERE section="Homework"') as $row) {
-                echo "<a href='/download_attachment.php?file=" . $row->filepath . "'><p>" . $row->name . "</p></a>";
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Homework"') as $row) {
+                echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
           </div>
@@ -353,13 +354,13 @@
 <div class="popup" id="popup8">
   <div class="popup_inner">
 
-          <section class="saying">
-           <h3>Subject</h3>
+          <section class="saying" id="popup8section">
+           <h3></h3>
             <hr>
-           <h4>Hashtag</h4>
+           <h4></h4>
            <hr><br>
-           <span >11:00</span>
-           <p>Content gadvfadfvsdfhbckajschaskjvhbgaygbvilacsbgugbaurobxourhbgoamhgmahbfxmoad6hrdfiygvuvsbgmsjd</p>
+           <span></span>
+           <p></p>
            <div><a href="#" target="_blank">FILE</a></div>
            <section class="pic">
             <img src="/static/img/avatar.png" width="37.5px" height="37.5px" />
