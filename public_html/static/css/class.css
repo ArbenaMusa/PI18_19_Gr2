@@ -383,12 +383,14 @@ table td
 table tbody td
 {
   font-size: 13px;
+  
 }
-table thead
+table thead,tbody
 {
   background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
   background: linear-gradient(to right, #FF4B2B, #FF416C);
 }
+
 table thead th
 {
   border-radius: 30px;
@@ -452,4 +454,23 @@ padding:0;
   color: red;
   font-size: 20px;
   font-weight: bold;
+}
+.attendance {
+  display: table;
+  float: left;
+  margin-right: 15px;
+}
+ .att-label {
+  display: table-row;
+}
+#chk {
+  display: table-row;
+  width: 100%;
+}
+.attendance input[type=text]{
+  margin: 5px 0 0 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
