@@ -336,7 +336,7 @@
               </td>
               <td>
                  <div class="attendance"><input type="text" placeholder="Student Name" name="studentname"></div>
-              <td> 
+              <td>
                  <div class="attendance"><input type="number" placeholder="Project Evaluation" min="0" max="100" name="projectEvaluation"></div>
               </td>
               </tr>
@@ -352,14 +352,23 @@
 </div>
 <div class="popup" id="popup8">
   <div class="popup_inner">
-    <div class="popup_text">
-      <p class="subject">Subject</p>
-      <span class="time" >11:00</span>
-      <p class="An_content"> Contenti sdfahsgdfjasgfdasf</p>
-      <!-- image and Attachment-->
-      <a href="#StudentData" class="popup_close">X</a>
-    </div>
-  </div>
+
+          <section class="saying">
+           <h3>Subject</h3>
+            <hr>
+           <h4>Hashtag</h4>
+           <hr><br>
+           <span >11:00</span>
+           <p>Content gadvfadfvsdfhbckajschaskjvhbgaygbvilacsbgugbaurobxourhbgoamhgmahbfxmoad6hrdfiygvuvsbgmsjd</p>
+           <div><a href="#" target="_blank">FILE</a></div>
+           <section class="pic">
+            <img src="/static/img/avatar.png" width="37.5px" height="37.5px" />
+          </section>
+          </section>
+
+
+          <a href="#StudentData" class="popup_close">X</a>
+        </div>
 </div>
 <div class="popup" id="popup9">
   <div class="popup_inner">
