@@ -113,6 +113,68 @@ SQL;
 
     return $db->query($query, $classId);
   }
+//---------------------------------Q&A-------------------------------------
+  public function makeQuestion($classId, $studentId, $title, $content) {
+    $app = $this->app;
+    $db = $app->db;
+    $date = date('Y-m-d H:i:s');
+
+    $query = <<<SQL
+    INSERT INTO questions(classId, studentId, title, content, time)
+    VALUES(%s, %s, %s, %s, "$date")
+SQL;
+
+    if(!$db->execute($query, $classId, $studentId, $title, $content)) {
+      return true;
+    }
+    return false;
+  }
+  public function getQuestions($classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    SELECT *
+    FROM questions
+    INNER JOIN users ON questions.studentId = users.Id
+    WHERE classId = %s
+    ORDER BY time DESC
+SQL;
+
+    return $db->query($query, $classId);
+  }
+  //--------------------Answers-----------------------------
+  public function answer($questionId, $authorId, $comment, $classId) {
+    $app = $this->app;
+    $db = $app->db;
+    $date = date('Y-m-d H:i:s');
+
+    $query = <<<SQL
+    INSERT INTO questions(questionId, authorId, comment, classId, time)
+    VALUES(%s, %s, %s, %s, "$date")
+SQL;
+
+    if(!$db->execute($query, $questionId, $authorId, $comment, $classId)) {
+      return true;
+    }
+    return false;
+  }
+  /*
+  public function getAnswers($classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    SELECT *
+    FROM answers
+    INNER JOIN users ON questions.studentId = users.Id
+    WHERE classId = %s
+    ORDER BY time DESC
+SQL;
+
+    return $db->query($query, $classId);
+  }
+  */
 }
 
 ?>

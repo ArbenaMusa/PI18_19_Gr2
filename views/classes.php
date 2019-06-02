@@ -72,27 +72,29 @@
           echo "<a href=\"#popup5\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Ask</a><br /><br />";
         }
         ?>
-        <div class="clearfix2">
-        <?php if($app->user->type() == 'teacher')
-        {
-          echo "<a href=\"#popup9\" style=\"text-decoration:none;\">";
-        }
-        ?>
-          <div class="basiccontainer">
-            <div class="container_color">
-              <p class="identification">Emri dhe Mbiemri</p>
-              <img src="\static\img\avatar.png" width="56.25px" height="56.25px" alt="photo" align="right" />
-              <p class="questions">Pyetje  </p>
-              <span class="time" >11:00</span>
-              <p class="answers"> Pergjigjje dsdfdsfsdfd edhvedhvefhvewfvedvekdve ef ef rf  f rf rf fefsef sfrgfrwgwrf</p>
-            </div>
-          </div>
-          <?php if($app->user->type() == 'teacher')
+        <?php
+          $questions = $app->classes->getQuestions($classData->classId);
+          if($questions)
           {
-            echo "</a>";
+            echo '<div class="clearfix2">';
+            foreach($questions as $q)
+            {
+                echo "<a href=\"#popup9\" style=\"text-decoration:none;\">";
+                echo "
+                    <div class=\"basiccontainer\">
+                      <div class=\"container_color\">
+                        <p class=\"identification\">". $q->name . "</p>
+                        <img src=\"\static\img\avatar.png\" width=\"56.25px\" height=\"56.25px\" alt=\"photo\" align=\"right\" />
+                        <p class=\"questions\">". $q->title . "</p>
+                        <span class=\"time\" >" . $q->time . "</span>
+                        <p class=\"answers\">". $q->content ."</p>
+                      </div>
+                    </div>";
+                echo "</a>";
+            }
+            echo "</div>";
           }
-          ?>
-        </div>
+        ?>
       </div>
       <!-- Resources -->
       <div class="content" id="Resources">
@@ -126,7 +128,6 @@
         echo "<div class=\"content\" id=\"StudentData\">";
         echo "<a href=\"#popup6\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Attendance</a>";
         echo "<a href=\"#popup7\" class=\"button1\" style=\"float:left; text-decoration:none; margin-left:40px;\">Project Evaluation</a>";
-        echo "<button class=\"button1\">Export Data</button>";
         echo "</div>";
       }?>
     </div>
@@ -227,11 +228,12 @@
 <div class="popup" id="popup5">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" method="post">
-        <label for="question_subject">Add a subject here...</label>
-        <input type="text" id="question_subject" name="question_subject" placeholder="Subject.." value="" required>
-        <label for="questsion_content">Type your question here...</label>
-        <textarea rows="4" cols="50" id="questsion_content" name="question_content" placeholder="Ask a question.." value=""></textarea><br />
+      <form action="/make_question.php" method="post">
+        <label for="title">Add a subject here</label>
+        <input type="text" id="title" name="title" placeholder="Subject" required>
+        <label for="content">Type your question here</label>
+        <textarea rows="4" cols="50" id="content" name="content" placeholder="Ask a question"></textarea><br />
+        <input name="classId" type="hidden" value="<?= $classData->classId ?>" />
         <input type="submit" value="Ask">
       </form>
       <a href="#Q&A" class="popup_close">X</a>
@@ -291,11 +293,42 @@
 <div class="popup" id="popup9">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" method="post">
-        <label for="Answer">Answer</label>
-        <input type="text" id="answer" name="answer" placeholder="Answer.." value="">
-        <input type="submit" value="Answer">
-      </form>
+      <?php
+      echo "<p>". $q->name . "</p>
+            <p>". $q->title . "</p>
+            <span>" . $q->time . "</span>
+            <p>". $q->content ."</p>";
+      ?>
+      <?php
+          $answers = $app->classes->getAnswerss($classData->classId);
+          if($answers) {
+            echo '<div class="clearfix1">';
+            foreach($answers as $an) {
+              echo '<div class="basiccontainer">
+                      <div class="container_color">
+                        <p class="subject">[' . $an->tag . '] ' . $an->title . '</p>
+                        <span class="time">' . $an->time . '</span>
+                        <p class="An_content">' . $an->content .'</p>
+                     </div>
+                   </div>';
+            }
+            echo '</div>';
+          }
+      ?>
+      <?php
+      if($app->user->type() == 'teacher')
+      {
+      echo '
+            <form action="#" method="post">
+              <label for="Answer">Answer</label>
+              <input type="text" id="answer" name="answer" placeholder="Answer.." value="">
+              <input type="submit" value="Answer">
+              <input name="authorId" type="hidden" value="<?= $classData->authorId ?>" />
+              <input name="questionId" type="hidden" value="<?= $classData->questionId ?>" />
+              <input name="classId" type="hidden" value="<?= $classData->classId ?>" />
+            </form>';
+      }
+      ?>
       <a href="#StudentData" class="popup_close">X</a>
     </div>
   </div>
