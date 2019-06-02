@@ -12,6 +12,8 @@ function appendToFile($path, $item) {
   file_put_contents($path, json_encode($json));
 }
 
+
+//----------------OLD CODE--------------------
 class JsonUsersManager implements IUsersManager {
   public function check($email, $password) {
     global $config;
@@ -51,6 +53,7 @@ class JsonUsersManager implements IUsersManager {
     });
   }
 }
+//------------------------------------------------------
 
 class SqlUsersManager implements IUsersManager {
   private $app;
@@ -60,9 +63,6 @@ class SqlUsersManager implements IUsersManager {
   }
 
   public function create($data) {
-    // 0 = success
-    // 1 = email is in use
-    // 2 = db error
     $db = $this->app->db;
 
     $checkForDuplicate = 'SELECT * FROM users WHERE email = %s';
@@ -79,9 +79,6 @@ class SqlUsersManager implements IUsersManager {
   }
 
   public function check($email, $password) {
-    // 0 = success
-    // 1 = email/password wrong
-    // 2 = email not verified
     $db = $this->app->db;
 
     $user = $db->first('SELECT * FROM users WHERE email=%s', $email);

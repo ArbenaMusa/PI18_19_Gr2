@@ -24,7 +24,6 @@ class EmailValidator implements IValidator {
   }
 }
 
-// Kontrollon nese vlera eshte e barabarte me ndonje vlere tjeter ne input
 class EqualsValidator implements IValidator {
   private $other;
 

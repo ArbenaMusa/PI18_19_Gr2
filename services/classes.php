@@ -2,9 +2,19 @@
 
 interface IClassManager {
   public function create($data);
+  public function find($classId);
+  public function addTeacher($teacherId, $classId);
   public function getTeacherClasses();
   public function getStudentClasses();
-  public function find($classId);
+  public function makeAnnouncement($classId, $teacherId, $tag, $title, $content, $filename, $filepath);
+  public function getAnnouncements($classId);
+  public function getAssistants($classId);
+  public function getStudents($classId);
+  public function makeQuestion($classId, $studentId, $title, $content);
+  public function getQuestions($classId);
+  public function answer($questionId, $authorId, $comment, $classId);
+  public function getAnswers($classId);
+  public function addResource($classId, $teacherId, $filepath, $name, $section);
 }
 
 class SqlClassManager implements IClassManager {

@@ -16,7 +16,6 @@ include_once __DIR__ . '/services/email.php';
 include_once __DIR__ . '/services/classes.php';
 
 class App {
-  // Serviset
   public $user;
   public $users;
   public $db;

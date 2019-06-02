@@ -35,7 +35,6 @@ if ($result->isError) {
 
 $user = $result->value;
 
-// Login success
 $app->user->logIn($user);
 return redirect('/index.php');
 

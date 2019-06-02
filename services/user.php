@@ -1,9 +1,13 @@
 <?php
 
 interface IUser {
-  public function name();
+  public function logIn($user);
   public function loggedIn();
   public function logOut();
+  public function id();
+  public function name();
+  public function email();
+  public function type();
 }
 
 class SessionUser implements IUser {
