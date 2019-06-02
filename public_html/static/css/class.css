@@ -444,6 +444,10 @@ padding:0;
   padding-right: 20px;
   color: #fff;
 }
+.classinfo a{
+  text-decoration: none;
+  color: #fff;
+}
 .clearfix2 .pr{
   margin: 0;
   padding-left: 10px;
