@@ -24,7 +24,7 @@
         </div>
       </header>
 
-        <button class="button-edit" onclick="editForm()">Edit Profile</button>
+        <button class="button1" onclick="editForm()">Edit Profile</button>
         <div class="edit-form" id="myForm">
           <form class="form-container" action="/profile.php" method="post" enctype="multipart/form-data">
             <h1>Edit Profile</h1>
