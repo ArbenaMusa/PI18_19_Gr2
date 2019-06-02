@@ -13,7 +13,7 @@ interface IClassManager {
   public function makeQuestion($classId, $studentId, $title, $content);
   public function getQuestions($classId);
   public function answer($questionId, $authorId, $comment, $classId);
-  public function getAnswers($classId);
+  public function getAnswers($classId, $questionId);
   public function addResource($classId, $teacherId, $filepath, $name, $section);
 }
 
@@ -173,7 +173,7 @@ SQL;
     VALUES(%s, %s, %s, %s, "$date")
 SQL;
 
-    $db->execute($query, $classId, $studentId, $title, $content);
+    return $db->execute($query, $classId, $studentId, $title, $content);
   }
 
   public function getQuestions($classId) {
@@ -181,10 +181,10 @@ SQL;
     $db = $app->db;
 
     $query = <<<SQL
-    SELECT *
-    FROM questions
-    INNER JOIN users ON questions.studentId = users.Id
-    WHERE classId = %s
+    SELECT q.title, q.content, q.time, u.name
+    FROM questions q
+    INNER JOIN users u ON q.studentId = u.id
+    WHERE q.classId = %s
     ORDER BY time DESC
 SQL;
 

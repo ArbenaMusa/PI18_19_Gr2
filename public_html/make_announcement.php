@@ -18,12 +18,6 @@ if (!$model->isValid()) {
 }
 
 $filename = saveUpload('attachment');
-if (!$filename) {
-  return view('classes', [
-    'message' => 'Fields are required.'
-  ]);
-}
-
 $friendlyname = $_FILES['attachment']['name'];
 $teacherId = $app->user->id();
 

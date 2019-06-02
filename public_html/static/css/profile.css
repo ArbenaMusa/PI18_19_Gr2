@@ -272,3 +272,9 @@ header p {
 .form-container .btn:hover{
   opacity: 1;
 }
+
+.success {
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+}

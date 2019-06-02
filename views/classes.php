@@ -94,9 +94,9 @@
                 echo "
                     <div class=\"basiccontainer\">
                       <div class=\"container_color\">
-                        <p class=\"identification\">". $q->name . "</p>
+                        <p class=\"identification\">". $q->name . " - ". $q->title . "</p>
                         <img src=\"\static\img\avatar.png\" width=\"56.25px\" height=\"56.25px\" alt=\"photo\" align=\"right\" />
-                        <p class=\"questions\">". $q->title . "</p>
+
                         <span class=\"time\" >" . $q->time . "</span>
                         <p class=\"answers\">". $q->content ."</p>
                       </div>
@@ -118,7 +118,7 @@
           <p class="pr"><b>Lecture Material</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Lectures"') as $row) {
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Lectures" AND classId = %s', $classData->classId) as $row) {
                 echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
@@ -126,7 +126,7 @@
           <p class="pr"><b>Lab</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Lab"') as $row) {
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Lab" AND classId = %s', $classData->classId) as $row) {
                 echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
@@ -134,7 +134,7 @@
           <p class="pr"><b>Projects</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Projects"') as $row) {
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Projects" AND classId = %s', $classData->classId) as $row) {
                 echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
@@ -142,7 +142,7 @@
           <p class="pr"><b>Results</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Results"') as $row) {
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Results" AND classId = %s', $classData->classId) as $row) {
                 echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>
@@ -150,7 +150,7 @@
           <p class="pr"><b>Homework</b></p>
           <div class="classinfo">
             <?php
-              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Homework"') as $row) {
+              foreach($app->db->query('SELECT filename, filepath FROM resources WHERE section="Homework" AND classId = %s', $classData->classId) as $row) {
                 echo "<a href='/download_attachment.php?file=" . $row->filepath . "&type=resource' ><p>" . $row->filename . "</p></a>";
               }
             ?>

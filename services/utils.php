@@ -183,7 +183,7 @@ function saveUpload($name) {
         throw new RuntimeException('Unknown errors.');
     }
 
-    if ($_FILES[$name]['size'] > 1000000) {
+    if ($_FILES[$name]['size'] > 10000000) {
       throw new RuntimeException('Exceeded filesize limit.');
     }
 
