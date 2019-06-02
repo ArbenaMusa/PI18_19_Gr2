@@ -1,7 +1,7 @@
 <?php
 
 if (!POST) {
-  return redirect('index');
+  return redirect('/index.php');
 }
 
 $model = $app->bind([
@@ -11,7 +11,7 @@ $model = $app->bind([
   'classId' => $match->required()
 ]);
 
-if(!$model->isValid()) {
+if (!$model->isValid()) {
   return view('classes', [
     'message' => 'Fields are required.'
   ]);
@@ -25,7 +25,7 @@ if(!$app->classes->makeAnnouncement($model->classId, $teacherId, $model->tag, $m
   ]);
 }
 
-return redirect('classes.php', [
+return redirect('/classes.php', [
   'id' => $model->classId
 ]);
 

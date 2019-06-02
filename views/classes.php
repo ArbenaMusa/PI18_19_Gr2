@@ -7,7 +7,7 @@
 <div style="padding-left:5%; padding-right:5%; padding-top:15px;">
   <?php
   view('layout/class_menu');
-
+  $classData = fallback($classData, null);
   if(!$classData) {
     return view('empty_class');
   }
@@ -205,9 +205,9 @@
 <div class="popup" id="popup4">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" method="post">
+      <form action="/resources.php" method="post" enctype="multipart/form-data">
         <label for="section">Section</label>
-        <input list="section" name="section" placeholder="Section.." value="">
+        <input list="section" name="section" placeholder="Section">
         <datalist id="section">
           <option value="lecture material">
           <option value="material of exercises">
@@ -215,11 +215,12 @@
           <option value="homework">
         </datalist>
         <br/> <br/>
-        <label for="attachment">PDF Attachment</label><br/>
-        <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple><br/>
+        <label for="attachment">Attachment</label><br/>
+        <input type="file" id="attachment" name="attachment" accept=".pdf" ><br/>
+        <input name="classId" type="hidden" value="<?= $classData->classId ?>" />
         <input type="submit" value="Add resources">
       </form>
-      <a href="#Resouces" class="popup_close">X</a>
+      <a href="#Resources" class="popup_close">X</a>
     </div>
   </div>
 </div>

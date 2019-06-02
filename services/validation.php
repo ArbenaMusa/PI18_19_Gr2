@@ -221,6 +221,13 @@ class ModelState implements IDynamicData {
     return isset($this->errorMap[$key]);
   }
 
+  public function logErrors() {
+    $errors = $this->errors();
+    if (!empty($errors)) {
+      logError('Model validation failed: ' . implode('; ', $errors));
+    }
+  }
+
   public function pluck($fields = []) {
     $data = $this->data;
     $errors = $this->errorMap;

@@ -94,10 +94,7 @@ SQL;
     VALUES(%s, %s, %s, %s, %s, '$date')
 SQL;
 
-    if(!$db->execute($query, $classId, $teacherId, $tag, $title, $content)) {
-      return true;
-    }
-    return false;
+    return $db->execute($query, $classId, $teacherId, $tag, $title, $content);
   }
 
   public function getAnnouncements($classId) {
@@ -112,6 +109,18 @@ SQL;
 SQL;
 
     return $db->query($query, $classId);
+  }
+
+  public function addResource($classId, $teacherId, $filepath, $name, $section) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    INSERT INTO resources(classId, teacherId, name, filepath, section)
+    VALUES (%s, %s, %s, '$filepath', %s)
+SQL;
+
+    return $app->db->execute($query, $classId, $teacherId, $name, $section);
   }
 }
 
