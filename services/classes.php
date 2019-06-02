@@ -96,17 +96,17 @@ SQL;
     return $db->first($query, $classId);
   }
 
-  public function makeAnnouncement($classId, $teacherId, $tag, $title, $content) {
+  public function makeAnnouncement($classId, $teacherId, $tag, $title, $content, $filename, $filepath) {
     $app = $this->app;
     $db = $app->db;
     $date = date('Y-m-d H:i:s');
 
     $query = <<<SQL
-    INSERT INTO announcements(classId, teacherId, tag, title, content, time)
-    VALUES(%s, %s, %s, %s, %s, '$date')
+    INSERT INTO announcements(classId, teacherId, tag, title, content, time, filename, filepath)
+    VALUES(%s, %s, %s, %s, %s, '$date', %s, %s)
 SQL;
 
-    return $db->execute($query, $classId, $teacherId, $tag, $title, $content);
+    return $db->execute($query, $classId, $teacherId, $tag, $title, $content, $filename, $filepath);
   }
 
   public function getAnnouncements($classId) {

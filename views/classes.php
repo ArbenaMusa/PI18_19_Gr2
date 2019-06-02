@@ -200,7 +200,7 @@
 <div class="popup" id="popup2">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="/make_announcement.php" method="post">
+      <form action="/make_announcement.php" method="post" enctype="multipart/form-data">
         <label for="title">Subject</label>
         <input type="text" id="title" name="title" placeholder="Subject" required>
         <label for="content">Content</label>
@@ -215,9 +215,6 @@
         <br/> <br/>
         <label for="attachment">PDF Attachment</label><br/>
         <input type="file" id="attachment" name="attachment" accept=".pdf" value="" multiple><br/>
-        <label for="picture">Picture</label><br/>
-        <input type="file" id="picture" name="picture" accept="image/*" value="" multiple>
-        <br/>
         <input name="classId" type="hidden" value="<?= $classData->classId ?>" />
         <input type="submit" value="Publish">
       </form>
