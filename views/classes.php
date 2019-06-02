@@ -4,6 +4,7 @@
     'javascript' => '/static/js/class.js',
     'javascript2' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js'
 ]);?>
+<div class='error'><?= fallback($message, null) ?></div>
 <div style="padding-left:5%; padding-right:5%; padding-top:15px;">
   <?php
   view('layout/class_menu');
@@ -33,7 +34,16 @@
             <p><b>Professor: <?= $classData->teacherName ?></b></p>
           </div>
           <div class="box">
-            <p><b>Assistant Professor: <?php //variabla ?></b></p>
+            <?php
+              $assistants = $app->classes->getAssistants($classData->classId);
+              if($assistants) {
+                echo "<p><b>Assistant Professor(s):";
+                foreach ($assistants as $a) {
+                  echo $a->name . '|';
+                }
+                echo "</b></p>";
+              }
+            ?>
           </div>
         </div>
         <?php if($app->user->type() == 'teacher')
@@ -54,7 +64,7 @@
             echo '<a href="#popup8" style="text-decoration:none;">
                       <div class="basiccontainer">
                         <div class="container_color">
-                          <p class="subject">[' . $a->tag . '] ' . $a->title . '</p>
+                          <p class="subject">[' . $a->tag . '] ' . $a->title . '-' . $a->name . '</p>
                     <span class="time">' . $a->time . '</span>
                     <p class="An_content">' . $a->content .'</p>
                   </div>
@@ -151,9 +161,10 @@
 <div class="popup" id="popup1">
   <div class="popup_inner">
     <div class="popup_text">
-      <form action="#" method="post">
+      <form action="/add_teacher.php" method="post">
         <label for="assistant">Assistant Professor</label>
         <input type="text" id="assistant" name="assistant" placeholder="Search here">
+        <input name="classId" type="hidden" value="<?= $classData->classId ?>" />
         <div id="display"></div>
         <input type="submit" value="Add">
       </form>

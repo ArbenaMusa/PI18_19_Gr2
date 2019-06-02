@@ -40,6 +40,18 @@ SQL;
     return makeResult($classId);
   }
 
+  public function addTeacher($teacherId, $classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    INSERT INTO teaches
+    VALUES (%s, %s, 'assistant')
+SQL;
+
+    return $db->execute($query, $teacherId, $classId);
+  }
+
   public function getTeacherClasses() {
     $app = $this->app;
     $db = $app->db;
@@ -102,10 +114,25 @@ SQL;
     $db = $app->db;
 
     $query = <<<SQL
-    SELECT *
-    FROM announcements
+    SELECT a.tag, a.title, a.content, u.name, a.time
+    FROM announcements a
+    INNER JOIN users u ON u.id = a.teacherId
     WHERE classId = %s
     ORDER BY time DESC
+SQL;
+
+    return $db->query($query, $classId);
+  }
+
+  public function getAssistants($classId) {
+    $app = $this->app;
+    $db = $app->db;
+
+    $query = <<<SQL
+    SELECT u.name
+    FROM teaches t
+    INNER JOIN users u ON t.teacherId = u.id
+    WHERE t.role = 'assistant' AND t.classId = %s
 SQL;
 
     return $db->query($query, $classId);
